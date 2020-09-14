@@ -2,7 +2,7 @@
 
 namespace Genesis\Support\Facades;
 
-use Illuminate\Support\Facades\Facade;
+use Genesis\Support\Facades\Facade;
 
 class App extends Facade
 {

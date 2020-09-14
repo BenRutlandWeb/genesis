@@ -48,7 +48,21 @@ class Container implements ContainerInterface
      */
     public function make(string $id, ...$params)
     {
-        return $this->call($this->get($id), ...$params);
+        return $this->call($this->resolve($id), ...$params);
+    }
+
+    /**
+     * Resolve the container binding.
+     *
+     * @param string $id
+     * @return void
+     */
+    public function resolve(string $id)
+    {
+        if ($this->has($id)) {
+            return $this->get($id);
+        }
+        return $id;
     }
 
     /**

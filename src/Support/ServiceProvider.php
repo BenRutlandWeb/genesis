@@ -2,13 +2,13 @@
 
 namespace Genesis\Support;
 
-use Psr\Container\ContainerInterface;
+use Genesis\Contracts\Container;
 
 abstract class ServiceProvider
 {
     protected $app;
 
-    public function __construct(ContainerInterface $app)
+    public function __construct(Container $app)
     {
         $this->app = $app;
     }

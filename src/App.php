@@ -3,6 +3,7 @@
 namespace Genesis;
 
 use Genesis\Container\Container;
+use Genesis\Support\ServiceProvider;
 
 class App extends Container
 {
@@ -19,6 +20,20 @@ class App extends Container
      * @var string
      */
     protected $basePath = '';
+
+    /**
+     * Indicates if the application has "booted".
+     *
+     * @var bool
+     */
+    protected $booted = false;
+
+    /**
+     * All of the registered service providers.
+     *
+     * @var array
+     */
+    protected $serviceProviders = [];
 
     /**
      * Create a new Genesis application instance.
@@ -127,6 +142,10 @@ class App extends Container
     public function registerBaseServiceProviders(): void
     {
         # code...
+        $this->singleton('db.connection', function ($app) {
+            return \WPEloquent\Database::connect();
+        });
+        (new \Genesis\Bootstrap\BootstrapServiceProvider($this))->register();
     }
 
     /**
@@ -137,6 +156,7 @@ class App extends Container
     public function registerCoreContainerAliases(): void
     {
         $aliases = [
+            'auth'    => \Genesis\Auth::class,
             'request' => \Genesis\Http\Request::class,
             'url'     => \Genesis\Routing\URLGenerator::class,
         ];
@@ -146,5 +166,102 @@ class App extends Container
                 return new $instance;
             });
         }
+    }
+
+    public function bootstrapWith(array $bootstrappers)
+    {
+        $this->hasBeenBootstrapped = true;
+
+        foreach ($bootstrappers as $bootstrapper) {
+            $this->make($bootstrapper)->bootstrap($this);
+        }
+    }
+
+    /**
+     * Register a service provider with the application.
+     *
+     * @param \Genesis\Support\ServiceProvider|string $provider
+     *
+     * @return \Genesis\Support\ServiceProvider
+     */
+    public function register($provider): ServiceProvider
+    {
+        if (is_string($provider)) {
+            $provider = $this->resolveProvider($provider);
+        }
+
+        $provider->register();
+
+        $this->markAsRegistered($provider);
+
+        if ($this->isBooted()) {
+            $this->bootProvider($provider);
+        }
+
+        return $provider;
+    }
+
+    /**
+     * Resolve a service provider instance from the class name.
+     *
+     * @param  string  $provider
+     * @return \Genesis\Support\ServiceProvider
+     */
+    public function resolveProvider(string $provider): ServiceProvider
+    {
+        return new $provider($this);
+    }
+
+    /**
+     * Mark the given provider as registered.
+     *
+     * @param \Genesis\Support\ServiceProvider $provider
+     *
+     * @return void
+     */
+    protected function markAsRegistered(ServiceProvider $provider): void
+    {
+        $this->serviceProviders[] = $provider;
+    }
+
+    /**
+     * Boot the given service provider.
+     *
+     * @param  \Genesis\Support\ServiceProvider  $provider
+     *
+     * @return mixed
+     */
+    protected function bootProvider(ServiceProvider $provider)
+    {
+        if (method_exists($provider, 'boot')) {
+            return $this->call([$provider, 'boot']);
+        }
+    }
+
+    /**
+     * Determine if the application has booted.
+     *
+     * @return bool
+     */
+    public function isBooted(): bool
+    {
+        return $this->booted;
+    }
+
+    /**
+     * Boot the application's service providers.
+     *
+     * @return void
+     */
+    public function boot(): void
+    {
+        if ($this->isBooted()) {
+            return;
+        }
+        array_walk($this->serviceProviders, function ($provider) {
+            $this->bootProvider($provider);
+        });
+
+        $this->booted = true;
     }
 }
