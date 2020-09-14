@@ -26,8 +26,8 @@ class Request
      */
     public function __construct()
     {
-        $this->request = (new Collection($_REQUEST));
-        $this->server = (new Collection($_SERVER));
+        $this->request = collect($_REQUEST);
+        $this->server = collect($_SERVER);
     }
 
     /**

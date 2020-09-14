@@ -6,17 +6,33 @@ use Genesis\Container\Container;
 
 class App extends Container
 {
+    /**
+     * The Genesis framework version.
+     *
+     * @var string
+     */
     protected const VERSION = '1.0.0';
 
+    /**
+     * The base path for the Genesis installation.
+     *
+     * @var string
+     */
     protected $basePath = '';
 
+    /**
+     * Create a new Genesis application instance.
+     *
+     * @param string|null $basePath
+     * @return void
+     */
     public function __construct(?string $basePath = null)
     {
         if ($basePath) {
             $this->setBasePath($basePath);
         }
         $this->registerBaseBindings();
-        $this->registerServiceProviders();
+        $this->registerBaseServiceProviders();
         $this->registerCoreContainerAliases();
     }
 
@@ -25,7 +41,7 @@ class App extends Container
      *
      * @return string
      */
-    public function version()
+    public function version(): string
     {
         return static::VERSION;
     }
@@ -50,47 +66,81 @@ class App extends Container
      *
      * @return void
      */
-    protected function bindPathsInContainer()
+    protected function bindPathsInContainer(): void
     {
         $this->instance('path.base', $this->basePath());
         $this->instance('path.app', $this->appPath());
     }
 
-    public function basePath($path = '')
+    /**
+     * Get the base path of the Genesis installation.
+     *
+     * @param  string  $path Optionally, a path to append to the base path
+     * @return string
+     */
+    public function basePath(string $path = ''): string
     {
         return $path ? $this->basePath . '/' . $path : $this->basePath;
     }
 
-    public function appPath($path = '')
+    /**
+     * Get the path to the application "app" directory.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    public function appPath(string $path = ''): string
     {
         $appPath = $this->basePath . '/app';
         return $path ? $appPath . '/' . $path : $appPath;
     }
 
-    public function configPath($path = '')
+    /**
+     * Get the path to the application configuration files.
+     *
+     * @param  string  $path Optionally, a path to append to the config path
+     * @return string
+     */
+    public function configPath(string $path = ''): string
     {
-        $appPath = $this->basePath . '/config';
-        return $path ? $appPath . '/' . $path : $appPath;
+        $configPath = $this->basePath . '/config';
+        return $path ? $configPath . '/' . $path : $configPath;
     }
 
-    public function registerBaseBindings()
+    /**
+     * Register the basic bindings into the container.
+     *
+     * @return void
+     */
+    public function registerBaseBindings(): void
     {
         static::setInstance($this);
 
         $this->instance('app', $this);
     }
 
-    public function registerServiceProviders()
+    /**
+     * Register all of the base service providers.
+     *
+     * @return void
+     */
+    public function registerBaseServiceProviders(): void
     {
         # code...
     }
 
-    public function registerCoreContainerAliases()
+    /**
+     * Register the core class aliases in the container.
+     *
+     * @return void
+     */
+    public function registerCoreContainerAliases(): void
     {
         $aliases = [
-            'url' => \Genesis\Routing\URLGenerator::class,
             'request' => \Genesis\Http\Request::class,
+            'url'     => \Genesis\Routing\URLGenerator::class,
         ];
+
         foreach ($aliases as $id => $instance) {
             $this->singleton($id, function ($app) use ($instance) {
                 return new $instance;
