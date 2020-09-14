@@ -4,7 +4,7 @@ namespace Genesis\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class App extends Facade
+class Auth extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class App extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'app';
+        return 'auth';
     }
 }

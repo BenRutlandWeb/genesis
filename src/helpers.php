@@ -1,6 +1,7 @@
 <?php
 
 use Genesis\App;
+use Genesis\Http\Request;
 
 if (!function_exists('app')) {
     /**
@@ -73,9 +74,23 @@ if (!function_exists('base_path')) {
     }
 }
 
-if (!function_exists('asset')) {
+if (!function_exists('config_path')) {
     /**
      * Get the path to the theme root.
+     *
+     * @param string $filepath
+     *
+     * @return string
+     */
+    function config_path(string $filepath = ''): string
+    {
+        return app()->configPath($filepath);
+    }
+}
+
+if (!function_exists('asset')) {
+    /**
+     * Get the asset URI
      *
      * @param string $filepath
      *
@@ -84,5 +99,41 @@ if (!function_exists('asset')) {
     function asset(string $filepath = ''): string
     {
         return app('url')->asset($filepath);
+    }
+}
+
+if (!function_exists('request')) {
+    /**
+     * Return an instance of the Request.
+     *
+     * @return \Genesis\Http\Request
+     */
+    function request(): Request
+    {
+        return app('request');
+    }
+}
+
+if (!function_exists('csrf_field')) {
+    /**
+     * Return the csrf field.
+     *
+     * @return string
+     */
+    function csrf_field(): string
+    {
+        return wp_nonce_field('_token', '_token');
+    }
+}
+
+if (!function_exists('method_field')) {
+    /**
+     * Return the method field.
+     *
+     * @return void
+     */
+    function method_field($method)
+    {
+        echo '<input type="hidden" name="_method" value="' . $method . '" />';
     }
 }

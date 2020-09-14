@@ -67,6 +67,12 @@ class App extends Container
         return $path ? $appPath . '/' . $path : $appPath;
     }
 
+    public function configPath($path = '')
+    {
+        $appPath = $this->basePath . '/config';
+        return $path ? $appPath . '/' . $path : $appPath;
+    }
+
     public function registerBaseBindings()
     {
         static::setInstance($this);
@@ -83,6 +89,7 @@ class App extends Container
     {
         $aliases = [
             'url' => \Genesis\Routing\URLGenerator::class,
+            'request' => \Genesis\Http\Request::class,
         ];
         foreach ($aliases as $id => $instance) {
             $this->singleton($id, function ($app) use ($instance) {
