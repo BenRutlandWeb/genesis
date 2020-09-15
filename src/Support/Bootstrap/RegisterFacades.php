@@ -2,17 +2,24 @@
 
 namespace Genesis\Support\Bootstrap;
 
+use Genesis\Contracts\Application;
 use Genesis\Support\AliasLoader;
 use Genesis\Support\Facades\Facade;
-use Psr\Container\ContainerInterface;
 
 class RegisterFacades
 {
-    public function bootstrap(ContainerInterface $app)
+    /**
+     * Register the facades and aliases.
+     *
+     * @param \Genesis\Contracts\Application $app
+     *
+     * @return void
+     */
+    public function bootstrap(Application $app): void
     {
         Facade::setFacadeApplication($app);
 
-        $aliases = config('aliases');
+        $aliases = $app->make('config')->get('aliases');
 
         AliasLoader::getInstance($aliases)->register();
     }

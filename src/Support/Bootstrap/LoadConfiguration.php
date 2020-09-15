@@ -7,11 +7,18 @@ use Genesis\Config\Repository;
 
 class LoadConfiguration
 {
-
-    public function bootstrap(Application $app)
+    /**
+     * Load the configuration files.
+     *
+     * @param \Genesis\Contracts\Application $app
+     *
+     * @return void
+     */
+    public function bootstrap(Application $app): void
     {
         $app->singleton('config', function ($app) {
-            return new Repository(require config_path('app.php'));
+            $config = require $app->configPath('app.php');
+            return $app->call(Repository::class, $config);
         });
     }
 }

@@ -2,6 +2,7 @@
 
 use Genesis\Application;
 use Genesis\Http\Request;
+use Illuminate\Support\Carbon;
 
 if (!function_exists('app')) {
     /**
@@ -88,6 +89,19 @@ if (!function_exists('config_path')) {
     }
 }
 
+if (!function_exists('resource_path')) {
+    /**
+     * Get a resource path.
+     *
+     * @param string $filepath
+     * @return string
+     */
+    function resource_path(string $filepath): string
+    {
+        return app()->resourcesPath($filepath);
+    }
+}
+
 if (!function_exists('config')) {
     /**
      * Get the config or a value from the config if a key is passed.
@@ -102,6 +116,20 @@ if (!function_exists('config')) {
             return app('config')->get($key);
         }
         return app('config');
+    }
+}
+
+if (!function_exists('auth')) {
+    /**
+     * Get the config or a value from the config if a key is passed.
+     *
+     * @param string $key
+     *
+     * @return mixed
+     */
+    function auth()
+    {
+        return app('auth');
     }
 }
 
@@ -152,5 +180,51 @@ if (!function_exists('method_field')) {
     function method_field($method)
     {
         echo '<input type="hidden" name="_method" value="' . $method . '" />';
+    }
+}
+
+if (!function_exists('view')) {
+    /**
+     * Return a view.
+     *
+     * @param string  $filepath
+     * @param array   $args
+     *
+     * @return string
+     */
+    function view(string $filepath, array $args = []): string
+    {
+        extract($args);
+        ob_start();
+        include base_path("views/$filepath.php");
+        return ob_get_clean();
+    }
+}
+
+if (!function_exists('now')) {
+    /**
+     * Create a new Carbon instance for the current time.
+     *
+     * @param  \DateTimeZone|string|null  $tz
+     *
+     * @return \Illuminate\Support\Carbon
+     */
+    function now($tz = null)
+    {
+        return Carbon::now($tz);
+    }
+}
+
+if (!function_exists('today')) {
+    /**
+     * Create a new Carbon instance for the current date.
+     *
+     * @param  \DateTimeZone|string|null  $tz
+     *
+     * @return \Illuminate\Support\Carbon
+     */
+    function today($tz = null)
+    {
+        return Carbon::today($tz);
     }
 }

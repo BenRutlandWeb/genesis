@@ -6,9 +6,16 @@ use Genesis\Contracts\Application;
 
 class RegisterProviders
 {
-    public function bootstrap(Application $app)
+    /**
+     * Bootstrap the providers.
+     *
+     * @param \Genesis\Contracts\Application $app
+     *
+     * @return void
+     */
+    public function bootstrap(Application $app): void
     {
-        $providers = config('providers');
+        $providers = $app->make('config')->get('providers');
 
         foreach ($providers as $provider) {
             $app->register($provider);

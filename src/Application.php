@@ -141,6 +141,18 @@ class Application extends Container implements ApplicationInterface
     }
 
     /**
+     * Get the path to the application resources.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    public function resourcesPath(string $path = ''): string
+    {
+        return $this->basePath . '/resources' . ($path ? '/' . $path : '');
+    }
+
+    /**
      * Register the basic bindings into the container.
      *
      * @return void
