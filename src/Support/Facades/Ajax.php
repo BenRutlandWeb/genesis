@@ -13,6 +13,6 @@ class Ajax extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'ajax';
+        return 'route.ajax';
     }
 }

@@ -171,7 +171,7 @@ class Application extends Container implements ApplicationInterface
      */
     protected function registerBaseServiceProviders(): void
     {
-        #$this->register(new \Genesis\ServiceProvider($this));
+        $this->register(new \Genesis\Routing\RouteServiceProvider($this));
     }
 
     /**
@@ -204,6 +204,7 @@ class Application extends Container implements ApplicationInterface
         $bootstrappers = [
             \Genesis\Support\Bootstrap\LoadConfiguration::class,
             \Genesis\Support\Bootstrap\RegisterFacades::class,
+            \Genesis\Support\Bootstrap\RegisterProviders::class,
         ];
 
         foreach ($bootstrappers as $bootstrapper) {
