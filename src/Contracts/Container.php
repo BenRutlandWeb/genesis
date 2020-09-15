@@ -36,4 +36,24 @@ interface Container extends ContainerInterface
      * @return void
      */
     public function instance(string $id, $instance): void;
+
+    /**
+     * Call the given clsoure/class method.
+     *
+     * @param callable|string $callback
+     * @param mixed           ...$params
+     *
+     * @return mixed
+     */
+    public function call($callback, ...$params);
+
+    /**
+     * Call a binding from the contianer.
+     *
+     * @param string $id
+     * @param mixed  ...$params
+     *
+     * @return mixed
+     */
+    public function make(string $id, ...$params);
 }

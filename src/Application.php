@@ -23,9 +23,16 @@ class Application extends Container implements ApplicationInterface
     protected $basePath = '';
 
     /**
+     * Indicates if the application has been "bootstrapped".
+     *
+     * @var boolean
+     */
+    protected $bootstrapped = false;
+
+    /**
      * Indicates if the application has "booted".
      *
-     * @var bool
+     * @var boolean
      */
     protected $booted = false;
 
@@ -39,7 +46,7 @@ class Application extends Container implements ApplicationInterface
     /**
      * The container instance.
      *
-     * @var \Genesis\Contracts\ApplicationInterface
+     * @var \Genesis\Contracts\Application
      */
     protected static $instance = null;
 
@@ -57,6 +64,7 @@ class Application extends Container implements ApplicationInterface
         $this->registerBaseBindings();
         $this->registerBaseServiceProviders();
         $this->registerCoreContainerAliases();
+        $this->bootstrapApplication();
     }
 
     /**
@@ -93,41 +101,43 @@ class Application extends Container implements ApplicationInterface
     {
         $this->instance('path.base', $this->basePath());
         $this->instance('path.app', $this->appPath());
+        $this->instance('path.config', $this->configPath());
     }
 
     /**
      * Get the base path of the Genesis installation.
      *
-     * @param  string  $path Optionally, a path to append to the base path
+     * @param string $path
+     *
      * @return string
      */
     public function basePath(string $path = ''): string
     {
-        return $path ? $this->basePath . '/' . $path : $this->basePath;
+        return $this->basePath . ($path ? '/' . $path : '');
     }
 
     /**
      * Get the path to the application "app" directory.
      *
-     * @param  string  $path
+     * @param string $path
+     *
      * @return string
      */
     public function appPath(string $path = ''): string
     {
-        $appPath = $this->basePath . '/app';
-        return $path ? $appPath . '/' . $path : $appPath;
+        return $this->basePath . '/app' . ($path ? '/' . $path : '');
     }
 
     /**
      * Get the path to the application configuration files.
      *
-     * @param  string  $path Optionally, a path to append to the config path
+     * @param string $path
+     *
      * @return string
      */
     public function configPath(string $path = ''): string
     {
-        $configPath = $this->basePath . '/config';
-        return $path ? $configPath . '/' . $path : $configPath;
+        return $this->basePath . '/config' . ($path ? '/' . $path : '');
     }
 
     /**
@@ -135,7 +145,7 @@ class Application extends Container implements ApplicationInterface
      *
      * @return void
      */
-    public function registerBaseBindings(): void
+    protected function registerBaseBindings(): void
     {
         static::setInstance($this);
 
@@ -147,13 +157,9 @@ class Application extends Container implements ApplicationInterface
      *
      * @return void
      */
-    public function registerBaseServiceProviders(): void
+    protected function registerBaseServiceProviders(): void
     {
-        # code...
-        $this->singleton('db.connection', function ($app) {
-            return \WPEloquent\Database::connect();
-        });
-        (new \Genesis\Bootstrap\BootstrapServiceProvider($this))->register();
+        #$this->register(new \Genesis\ServiceProvider($this));
     }
 
     /**
@@ -161,7 +167,7 @@ class Application extends Container implements ApplicationInterface
      *
      * @return void
      */
-    public function registerCoreContainerAliases(): void
+    protected function registerCoreContainerAliases(): void
     {
         $aliases = [
             'auth'    => \Genesis\Auth\Auth::class,
@@ -171,18 +177,27 @@ class Application extends Container implements ApplicationInterface
 
         foreach ($aliases as $id => $instance) {
             $this->singleton($id, function ($app) use ($instance) {
-                return new $instance;
+                return $app->call($instance);
             });
         }
     }
 
-    public function bootstrapWith(array $bootstrappers)
+    /**
+     * Bootstrap the application
+     *
+     * @return void
+     */
+    protected function bootstrapApplication(): void
     {
-        $this->hasBeenBootstrapped = true;
+        $bootstrappers = [
+            \Genesis\Support\Bootstrap\LoadConfiguration::class,
+            \Genesis\Support\Bootstrap\RegisterFacades::class,
+        ];
 
         foreach ($bootstrappers as $bootstrapper) {
-            $this->make($bootstrapper)->bootstrap($this);
+            $this->call($bootstrapper)->bootstrap($this);
         }
+        $this->boot();
     }
 
     /**
@@ -200,7 +215,7 @@ class Application extends Container implements ApplicationInterface
 
         $provider->register();
 
-        $this->markAsRegistered($provider);
+        $this->serviceProviders[] = $provider;
 
         if ($this->isBooted()) {
             $this->bootProvider($provider);
@@ -212,7 +227,8 @@ class Application extends Container implements ApplicationInterface
     /**
      * Resolve a service provider instance from the class name.
      *
-     * @param  string  $provider
+     * @param string $provider
+     *
      * @return \Genesis\Support\ServiceProvider
      */
     public function resolveProvider(string $provider): ServiceProvider
@@ -221,35 +237,9 @@ class Application extends Container implements ApplicationInterface
     }
 
     /**
-     * Mark the given provider as registered.
-     *
-     * @param \Genesis\Support\ServiceProvider $provider
-     *
-     * @return void
-     */
-    protected function markAsRegistered(ServiceProvider $provider): void
-    {
-        $this->serviceProviders[] = $provider;
-    }
-
-    /**
-     * Boot the given service provider.
-     *
-     * @param  \Genesis\Support\ServiceProvider  $provider
-     *
-     * @return mixed
-     */
-    protected function bootProvider(ServiceProvider $provider)
-    {
-        if (method_exists($provider, 'boot')) {
-            return $this->call([$provider, 'boot']);
-        }
-    }
-
-    /**
      * Determine if the application has booted.
      *
-     * @return bool
+     * @return boolean
      */
     public function isBooted(): bool
     {
@@ -266,13 +256,25 @@ class Application extends Container implements ApplicationInterface
         if ($this->isBooted()) {
             return;
         }
-        array_walk($this->serviceProviders, function ($provider) {
+        foreach ($this->serviceProviders as $provider) {
             $this->bootProvider($provider);
-        });
-
+        }
         $this->booted = true;
     }
 
+    /**
+     * Boot the given service provider.
+     *
+     * @param \Genesis\Support\ServiceProvider $provider
+     *
+     * @return mixed
+     */
+    protected function bootProvider(ServiceProvider $provider)
+    {
+        if (method_exists($provider, 'boot')) {
+            return $this->call([$provider, 'boot']);
+        }
+    }
 
     /**
      * Get an instance of the container.

@@ -1,6 +1,6 @@
 <?php
 
-use Genesis\App;
+use Genesis\Application;
 use Genesis\Http\Request;
 
 if (!function_exists('app')) {
@@ -12,9 +12,9 @@ if (!function_exists('app')) {
     function app($id = null, ...$params)
     {
         if (is_null($id)) {
-            return App::getInstance();
+            return Application::getInstance();
         }
-        return App::getInstance()->make($id, ...$params);
+        return Application::getInstance()->make($id, ...$params);
     }
 }
 
@@ -85,6 +85,23 @@ if (!function_exists('config_path')) {
     function config_path(string $filepath = ''): string
     {
         return app()->configPath($filepath);
+    }
+}
+
+if (!function_exists('config')) {
+    /**
+     * Get the config or a value from the config if a key is passed.
+     *
+     * @param string $key
+     *
+     * @return mixed
+     */
+    function config(string $key = '')
+    {
+        if ($key) {
+            return app('config')->get($key);
+        }
+        return app('config');
     }
 }
 

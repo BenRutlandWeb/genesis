@@ -17,8 +17,9 @@ class Container implements ContainerInterface
     /**
      * Call the given closure/constructor or method.
      *
-     * @param Closure|array|string $callable
-     * @param mixed ...$params
+     * @param callable|string $callable
+     * @param mixed           ...$params
+     *
      * @return mixed
      */
     public function call($callable, ...$params)
@@ -33,64 +34,50 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Call a binding in the container with the ID.
+     * Call a binding from the contianer.
      *
      * @param string $id
-     * @param mixed ...$params
+     * @param mixed  ...$params
+     *
      * @return mixed
      */
     public function make(string $id, ...$params)
     {
-        return $this->call($this->resolve($id), ...$params);
-    }
-
-    /**
-     * Resolve the container binding.
-     *
-     * @param string $id
-     * @return void
-     */
-    public function resolve(string $id)
-    {
-        if ($this->has($id)) {
-            return $this->get($id);
-        }
-        return $id;
+        return $this->call($this->get($id), ...$params);
     }
 
     /**
      * Register a binding with the container.
      *
-     * @param string $id
+     * @param string  $id
      * @param Closure $closure
-     * @param boolean $share
+     *
      * @return void
      */
-    public function bind(string $id, Closure $closure, $share = false): void
+    public function bind(string $id, Closure $closure): void
     {
-        if ($share) {
-            $closure = $this->call($closure, $this);
-        }
         $this->bindings[$id] = $closure;
     }
 
     /**
      * Register a singleton with the container.
      *
-     * @param string $id
+     * @param string  $id
      * @param Closure $closure
+     *
      * @return void
      */
     public function singleton(string $id, Closure $closure): void
     {
-        $this->bind($id, $closure, true);
+        $this->bindings[$id] = $this->call($closure, $this);
     }
 
     /**
      * Register an instance with the container.
      *
      * @param string $id
-     * @param mixed $instance
+     * @param mixed  $instance
+     *
      * @return void
      */
     public function instance(string $id, $instance): void
@@ -102,6 +89,7 @@ class Container implements ContainerInterface
      * Check if the ID exists in the container.
      *
      * @param string $id
+     *
      * @return boolean
      */
     public function has($id): bool
