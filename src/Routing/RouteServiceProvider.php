@@ -8,6 +8,9 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->bind('csrf', function ($app) {
+            return $app->call(\Genesis\Routing\VerifyCSRFToken::class, $app->get('request'));
+        });
         $this->app->singleton('route.ajax', function ($app) {
             return $app->call(\Genesis\Routing\Ajax::class, $app);
         });
