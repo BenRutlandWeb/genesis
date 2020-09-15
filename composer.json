@@ -1,0 +1,25 @@
+{
+  "name": "brw/genesis",
+  "description": "WordPress theme framework for elegant development",
+  "type": "framework",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ben Rutland",
+      "homepage": "https://github.com/BenRutlandWeb"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "brw/wp-eloquent": "@dev",
+    "illuminate/support": "^7.27"
+  },
+  "autoload": {
+    "psr-4": {
+      "Genesis\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  }
+}
