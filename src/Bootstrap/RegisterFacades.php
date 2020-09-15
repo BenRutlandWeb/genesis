@@ -3,7 +3,7 @@
 namespace Genesis\Bootstrap;
 
 use Genesis\Contracts\Container;
-use Genesis\Foundation\AliasLoader;
+use Genesis\Support\AliasLoader;
 use Genesis\Support\Facades\Facade;
 
 class RegisterFacades

@@ -2,6 +2,8 @@
 
 namespace Genesis\Support;
 
+use Genesis\Support\ServiceProvider;
+
 class AggregateServiceProvider extends ServiceProvider
 {
     /**
