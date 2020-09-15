@@ -23,7 +23,7 @@ class URLGenerator
         if ($this->isValidUrl($path)) {
             return $path;
         }
-        return $this->baseURI . '/' . $path;
+        return $this->baseURI . '/assets/' . $path;
     }
 
     /**
