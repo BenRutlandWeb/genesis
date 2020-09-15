@@ -196,7 +196,7 @@ if (!function_exists('view')) {
     {
         extract($args);
         ob_start();
-        include base_path("views/$filepath.php");
+        include app()->resourcesPath("views/$filepath.php");
         return ob_get_clean();
     }
 }
