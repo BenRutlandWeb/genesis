@@ -18,7 +18,7 @@ class BootstrapServiceProvider extends ServiceProvider
         \Genesis\Bootstrap\BootProviders::class,
     ];
 
-    public function register()
+    public function register(): void
     {
         $this->app->bootstrapWith($this->bootstrappers);
     }

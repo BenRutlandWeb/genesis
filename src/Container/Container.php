@@ -8,13 +8,6 @@ use Genesis\Contracts\Container as ContainerInterface;
 class Container implements ContainerInterface
 {
     /**
-     * The container instance.
-     *
-     * @var \Genesis\Contracts\ContainerInterface
-     */
-    protected static $instance = null;
-
-    /**
      * The container bindings.
      *
      * @var array
@@ -128,30 +121,5 @@ class Container implements ContainerInterface
             return $this->call($this->bindings[$id], $this);
         }
         throw new NotFoundException("No entry was found for '{$id}' identifier.");
-    }
-
-
-    /**
-     * Get an instance of the container.
-     *
-     * @return \Genesis\Contracts\Container
-     */
-    public static function getInstance(): ContainerInterface
-    {
-        if (is_null(static::$instance)) {
-            static::$instance = new static;
-        }
-        return static::$instance;
-    }
-
-    /**
-     * Set the shared instance of the container.
-     *
-     * @param \Genesis\Contracts\Container|null $app
-     * @return \Genesis\Contracts\Container|static
-     */
-    public static function setInstance(ContainerInterface $app = null): ContainerInterface
-    {
-        return static::$instance = $app;
     }
 }

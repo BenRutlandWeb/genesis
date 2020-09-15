@@ -2,14 +2,14 @@
 
 namespace Genesis\Support\Facades;
 
-use Genesis\Contracts\Container;
+use Psr\Container\ContainerInterface;
 
 abstract class Facade
 {
     /**
      * The container.
      *
-     * @var \Genesis\Bootstrap\Container\Container
+     * @var \Psr\Container\ContainerInterface
      */
     public static $app;
 
@@ -29,11 +29,11 @@ abstract class Facade
     /**
      * Assign the container to the facade.
      *
-     * @param \Genesis\Bootstrap\Container\Container $app The container.
+     * @param \Psr\Container\ContainerInterface $app The container.
      *
      * @return void
      */
-    public static function setFacadeApplication(Container $app): void
+    public static function setFacadeApplication(ContainerInterface $app): void
     {
         static::$app = $app;
     }

@@ -3,9 +3,10 @@
 namespace Genesis;
 
 use Genesis\Container\Container;
+use Genesis\Contracts\Application as ApplicationInterface;
 use Genesis\Support\ServiceProvider;
 
-class App extends Container
+class Application extends Container implements ApplicationInterface
 {
     /**
      * The Genesis framework version.
@@ -34,6 +35,13 @@ class App extends Container
      * @var array
      */
     protected $serviceProviders = [];
+
+    /**
+     * The container instance.
+     *
+     * @var \Genesis\Contracts\ApplicationInterface
+     */
+    protected static $instance = null;
 
     /**
      * Create a new Genesis application instance.
@@ -65,9 +73,9 @@ class App extends Container
      * Set the app base path.
      *
      * @param string $basePath
-     * @return \Genesis\Contracts\Container
+     * @return \Genesis\Contracts\Application
      */
-    public function setBasePath(string $basePath): Container
+    public function setBasePath(string $basePath): ApplicationInterface
     {
         $this->basePath = rtrim($basePath, '\/');
 
@@ -156,7 +164,7 @@ class App extends Container
     public function registerCoreContainerAliases(): void
     {
         $aliases = [
-            'auth'    => \Genesis\Auth::class,
+            'auth'    => \Genesis\Auth\Auth::class,
             'request' => \Genesis\Http\Request::class,
             'url'     => \Genesis\Routing\URLGenerator::class,
         ];
@@ -263,5 +271,31 @@ class App extends Container
         });
 
         $this->booted = true;
+    }
+
+
+    /**
+     * Get an instance of the container.
+     *
+     * @return \Genesis\Contracts\Application
+     */
+    public static function getInstance(): ApplicationInterface
+    {
+        if (is_null(static::$instance)) {
+            static::$instance = new static;
+        }
+        return static::$instance;
+    }
+
+    /**
+     * Set the shared instance of the container.
+     *
+     * @param \Genesis\Contracts\Application|null $app
+     *
+     * @return \Genesis\Contracts\Application
+     */
+    public static function setInstance(?ApplicationInterface $app = null): ApplicationInterface
+    {
+        return static::$instance = $app;
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Genesis\Bootstrap;
 
-use Genesis\App;
+use Genesis\Contracts\Application;
 
 class BootProviders
 {
-    public function bootstrap(App $app)
+    public function bootstrap(Application $app)
     {
         $app->boot();
     }

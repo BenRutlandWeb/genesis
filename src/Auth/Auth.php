@@ -1,6 +1,6 @@
 <?php
 
-namespace Genesis;
+namespace Genesis\Auth;
 
 use WPEloquent\Models\User;
 

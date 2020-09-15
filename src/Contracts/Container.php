@@ -7,64 +7,33 @@ use Psr\Container\ContainerInterface;
 
 interface Container extends ContainerInterface
 {
-
     /**
-     * Call the given closure/constructor or method.
+     * Register a binding with the Container.
      *
-     * @param Closure|array|string $callable
-     * @param mixed ...$params
-     * @return mixed
-     */
-    public function call($callable, ...$params);
-
-    /**
-     * Call a binding in the container with the ID.
-     *
-     * @param string $id
-     * @param mixed ...$params
-     * @return mixed
-     */
-    public function make(string $id, ...$params);
-
-    /**
-     * Register a binding with the container.
-     *
-     * @param string $id
+     * @param string  $id
      * @param Closure $closure
-     * @param boolean $share
+     *
      * @return void
      */
-    public function bind(string $id, Closure $closure, $share = false);
+    public function bind(string $id, Closure $closure): void;
 
     /**
-     * Register a singleton with the container.
+     * Register a singleton with the Container.
      *
-     * @param string $id
+     * @param string  $id
      * @param Closure $closure
+     *
      * @return void
      */
-    public function singleton(string $id, Closure $closure);
+    public function singleton(string $id, Closure $closure): void;
 
     /**
-     * Register an instance with the container.
+     * Register an instance with the Container.
      *
      * @param string $id
-     * @param mixed $instance
+     * @param mixed  $instance
+     *
      * @return void
      */
-    public function instance(string $id, $instance);
-
-    /**
-     * Return an instance of the container.
-     *
-     * @return \Genesis\Contracts\Container
-     */
-    public static function getInstance(): Container;
-
-    /**
-     * Set the shared instance of the container.
-     *
-     * @return \Genesis\Contracts\Container
-     */
-    public static function setInstance(Container $app = null): Container;
+    public function instance(string $id, $instance): void;
 }
