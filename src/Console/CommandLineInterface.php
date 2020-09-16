@@ -9,8 +9,8 @@ class CommandLineInterface
     public function __construct($basePath, $argv)
     {
         $this->basePath = $basePath;
-
-        $method = array_shift(array_shift($argv));
+        $command = array_shift($argv);
+        $method = array_shift($argv);
 
         call_user_func([$this, $method], $argv);
     }
