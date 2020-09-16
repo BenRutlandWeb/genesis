@@ -1,12 +1,29 @@
 <?php
 
-namespace Genesis\Command;
+namespace Genesis\Console;
 
 use Illuminate\Support\Str;
-use WP_CLI;
 
 class CommandLineInterface
 {
+    public function __construct($basePath, $argv)
+    {
+        $this->basePath = $basePath;
+
+        $method = array_shift(array_shift($argv));
+
+        call_user_func([$this, $method], $argv);
+    }
+
+    public function error($str)
+    {
+        die("\033[31mError:\033[0m {$str}");
+    }
+
+    public function success($str)
+    {
+        print("\033[32mSuccess:\033[0m {$str}\n");
+    }
     /**
      * Make a controller.
      *
@@ -16,17 +33,18 @@ class CommandLineInterface
      */
     public function controller(array $args): void
     {
-        $filePath = app_path('Controllers/' . Str::studly($args[0]) . '.php');
+        $filePath = $this->basePath . '/app/Controllers/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
-            WP_CLI::error("The controller '{$args[0]}' already exists");
+            $this->error("The controller '{$args[0]}' already exists");
         }
         $template = file_get_contents(__DIR__ . '/templates/controller.php');
         $template = str_replace('__CLASSNAME__', Str::studly($args[0]), $template);
 
         file_put_contents($filePath, $template);
 
-        WP_CLI::success("Controller '{$args[0]}' created");
+        $this->success("Controller '{$args[0]}' created");
+        die();
     }
 
     /**
@@ -38,10 +56,10 @@ class CommandLineInterface
      */
     public function model(array $args): void
     {
-        $filePath = app_path('Models/' . Str::studly($args[0]) . '.php');
+        $filePath = $this->basePath . '/app/Models/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
-            WP_CLI::error("The model '{$args[0]}' already exists");
+            $this->error("The model '{$args[0]}' already exists");
         }
         $template = file_get_contents(__DIR__ . '/templates/model.php');
         $template = str_replace('__CLASSNAME__', Str::studly($args[0]), $template);
@@ -49,7 +67,8 @@ class CommandLineInterface
 
         file_put_contents($filePath, $template);
 
-        WP_CLI::success("Model '{$args[0]}' created");
+        $this->success("Model '{$args[0]}' created");
+        die();
     }
 
     /**
@@ -61,16 +80,17 @@ class CommandLineInterface
      */
     public function provider(array $args): void
     {
-        $filePath = app_path('Providers/' . Str::studly($args[0]) . '.php');
+        $filePath = $this->basePath . '/app/Providers/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
-            WP_CLI::error("The service provider '{$args[0]}' already exists");
+            $this->error("The service provider '{$args[0]}' already exists");
         }
         $template = file_get_contents(__DIR__ . '/templates/provider.php');
         $template = str_replace('__CLASSNAME__', Str::studly($args[0]), $template);
 
         file_put_contents($filePath, $template);
 
-        WP_CLI::success("ServiceProvider '{$args[0]}' created");
+        $this->success("ServiceProvider '{$args[0]}' created");
+        die();
     }
 }
