@@ -1,6 +1,7 @@
 <?php
 
 use Genesis\Application;
+use Genesis\Auth\Auth;
 use Genesis\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -121,13 +122,13 @@ if (!function_exists('config')) {
 
 if (!function_exists('auth')) {
     /**
-     * Get the config or a value from the config if a key is passed.
+     * Get the auth object.
      *
      * @param string $key
      *
-     * @return mixed
+     * @return \Genesis\Auth\Auth
      */
-    function auth()
+    function auth(): Auth
     {
         return app('auth');
     }
@@ -141,7 +142,7 @@ if (!function_exists('asset')) {
      *
      * @return string
      */
-    function asset(string $filepath = ''): string
+    function asset(string $filepath): string
     {
         return app('url')->asset($filepath);
     }
@@ -167,7 +168,7 @@ if (!function_exists('csrf_field')) {
      */
     function csrf_field(): string
     {
-        return wp_nonce_field('_token', '_token');
+        return app('csrf')->field();
     }
 }
 
@@ -175,9 +176,11 @@ if (!function_exists('method_field')) {
     /**
      * Return the method field.
      *
+     * @param string $method The HTTP method
+     *
      * @return void
      */
-    function method_field($method)
+    function method_field(string $method): void
     {
         echo '<input type="hidden" name="_method" value="' . $method . '" />';
     }
