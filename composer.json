@@ -22,5 +22,8 @@
     "files": [
       "src/helpers.php"
     ]
+  },
+  "require-dev": {
+    "wp-cli/wp-cli-bundle": "^2.4"
   }
 }
