@@ -6,21 +6,55 @@ use Illuminate\Support\Str;
 
 class CommandLineInterface
 {
-    public function __construct($basePath, $argv)
+    /**
+     * The app base path.
+     *
+     * @var string
+     */
+    protected $basePath;
+
+    /**
+     * Boot the CLI
+     *
+     * @param string $basePath
+     * @param array $argv
+     *
+     * @return void
+     */
+    public function __construct(string $basePath, array $argv)
     {
         $this->basePath = $basePath;
         $command = array_shift($argv);
         $method = array_shift($argv);
 
+        if (empty($argv)) {
+            $this->error('No arguments were passed.');
+        }
+        if (!method_exists($this, $method)) {
+            $this->error('That command is invalid.');
+        }
         call_user_func([$this, $method], $argv);
     }
 
-    public function error($str)
+    /**
+     * Print and error message.
+     *
+     * @param string $str
+     * @return void
+     */
+    public function error(string $str): void
     {
-        die("\033[31mError:\033[0m {$str}");
+        print("\033[31mError:\033[0m {$str}");
     }
 
-    public function success($str)
+    /**
+     * Print a success message
+     *
+     * @param string $str
+     *
+     * @return void
+     */
+    public function success(string $str): void
     {
         print("\033[32mSuccess:\033[0m {$str}\n");
     }
@@ -40,7 +74,7 @@ class CommandLineInterface
         $filePath = $dirPath . '/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
-            $this->error("The controller '{$args[0]}' already exists");
+            die($this->error("The controller '{$args[0]}' already exists"));
         }
         $template = file_get_contents(__DIR__ . '/templates/controller.php');
         $template = str_replace('__CLASSNAME__', Str::studly($args[0]), $template);
@@ -48,7 +82,6 @@ class CommandLineInterface
         file_put_contents($filePath, $template);
 
         $this->success("Controller '{$args[0]}' created");
-        die();
     }
 
     /**
@@ -67,7 +100,7 @@ class CommandLineInterface
         $filePath = $dirPath . '/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
-            $this->error("The model '{$args[0]}' already exists");
+            die($this->error("The model '{$args[0]}' already exists"));
         }
         $template = file_get_contents(__DIR__ . '/templates/model.php');
         $template = str_replace('__CLASSNAME__', Str::studly($args[0]), $template);
@@ -76,7 +109,6 @@ class CommandLineInterface
         file_put_contents($filePath, $template);
 
         $this->success("Model '{$args[0]}' created");
-        die();
     }
 
     /**
@@ -95,7 +127,7 @@ class CommandLineInterface
         $filePath = $dirPath . '/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
-            $this->error("The service provider '{$args[0]}' already exists");
+            die($this->error("The service provider '{$args[0]}' already exists"));
         }
         $template = file_get_contents(__DIR__ . '/templates/provider.php');
         $template = str_replace('__CLASSNAME__', Str::studly($args[0]), $template);
@@ -103,6 +135,12 @@ class CommandLineInterface
         file_put_contents($filePath, $template);
 
         $this->success("ServiceProvider '{$args[0]}' created");
-        die();
+
+        $configPath = $this->basePath . '/config/app.php';
+        $config = file_get_contents($configPath);
+
+        $template = str_replace("'providers' => [", "'providers' => [\n        \\App\\Providers\\" . Str::studly($args[0]) . "::class,", $config);
+
+        file_put_contents($configPath, $template);
     }
 }
