@@ -183,6 +183,23 @@ if (!function_exists('method_field')) {
     }
 }
 
+if (!function_exists('ajax')) {
+    /**
+     * Return the ajax instance or the ajax URL if an action is passed.
+     *
+     * @param string $action The action to resolve in the AJAX route handler.
+     *
+     * @return mixed
+     */
+    function ajax(string $action = '')
+    {
+        if ($action) {
+            return app('route.ajax')->url($action);
+        }
+        return app('route.ajax');
+    }
+}
+
 if (!function_exists('view')) {
     /**
      * Return a view.

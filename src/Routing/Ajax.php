@@ -65,4 +65,16 @@ class Ajax
         header('HTTP/1.0 403 Forbidden');
         die('403 Forbidden');
     }
+
+    /**
+     * The AJAX URL with the specified action.
+     *
+     * @param string $action The action to resolve in the AJAX route handler.
+     *
+     * @return string
+     */
+    public function url(string $action)
+    {
+        return admin_url("admin-ajax.php?action={$action}");
+    }
 }

@@ -2,21 +2,23 @@
 
 namespace Genesis\Http;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use JsonSerializable;
 
-class Request
+class Request implements JsonSerializable
 {
     /**
      * The app instance.
      *
-     * @var App\Support\Http\Request
+     * @var \Genesis\Http\Request
      */
     private static $instance = null;
 
     /**
      * The request collection.
      *
-     * @var Illuminate\Support\Collection;
+     * @var \Illuminate\Support\Collection
      */
     public $request = [];
 
@@ -32,12 +34,12 @@ class Request
     /**
      * Return the instance of the app.
      *
-     * @return App\Support\Http\Request
+     * @return \Genesis\Http\Request
      */
     public static function getInstance(): Request
     {
         if (!self::$instance) {
-            self::$instance = new self();
+            self::$instance = new static;
         }
         return self::$instance;
     }
@@ -90,5 +92,15 @@ class Request
     public function header(string $key): string
     {
         return $this->server->get($key) ?? '';
+    }
+
+    /**
+     * Only serialize the request object.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function jsonSerialize(): Collection
+    {
+        return $this->request;
     }
 }
