@@ -33,7 +33,11 @@ class CommandLineInterface
      */
     public function controller(array $args): void
     {
-        $filePath = $this->basePath . '/app/Controllers/' . Str::studly($args[0]) . '.php';
+        $dirPath = $this->basePath . '/app/Controllers';
+        if (!file_exists($dirPath)) {
+            mkdir($dirPath);
+        }
+        $filePath = $dirPath . '/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
             $this->error("The controller '{$args[0]}' already exists");
@@ -56,7 +60,11 @@ class CommandLineInterface
      */
     public function model(array $args): void
     {
-        $filePath = $this->basePath . '/app/Models/' . Str::studly($args[0]) . '.php';
+        $dirPath = $this->basePath . '/app/Models';
+        if (!file_exists($dirPath)) {
+            mkdir($dirPath);
+        }
+        $filePath = $dirPath . '/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
             $this->error("The model '{$args[0]}' already exists");
@@ -80,7 +88,11 @@ class CommandLineInterface
      */
     public function provider(array $args): void
     {
-        $filePath = $this->basePath . '/app/Providers/' . Str::studly($args[0]) . '.php';
+        $dirPath = $this->basePath . '/app/Providers';
+        if (!file_exists($dirPath)) {
+            mkdir($dirPath);
+        }
+        $filePath = $dirPath . '/' . Str::studly($args[0]) . '.php';
 
         if (file_exists($filePath)) {
             $this->error("The service provider '{$args[0]}' already exists");
