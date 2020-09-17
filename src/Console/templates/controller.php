@@ -12,9 +12,9 @@ class __CLASSNAME__ extends Controller
      *
      * @param \Genesis\Http\Request $request
      *
-     * @return void
+     * @return mixed
      */
-    public function __invoke(Request $request): void
+    public function __invoke(Request $request)
     {
         # code
     }
