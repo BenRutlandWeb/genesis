@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
             return $app->call(\Genesis\Routing\CSRFToken::class, $app->get('request'));
         });
         $this->app->singleton('route.ajax', function ($app) {
-            return $app->call(\Genesis\Routing\Ajax::class, $app);
+            return $app->call(\Genesis\Routing\AjaxRouter::class, $app);
         });
     }
 
@@ -26,6 +26,14 @@ class RouteServiceProvider extends ServiceProvider
         $this->app->singleton('url', function ($app) {
             return $app->call(\Genesis\Routing\URLGenerator::class, $app);
         });
-        require base_path('routes/ajax.php');
+        #require base_path('routes/ajax.php');
+
+        $router = $this->app->get('route.ajax');
+
+        $router->middleware('ajax')->group(base_path('routes/ajax.php'));
+
+
+
+        $router->run();
     }
 }
