@@ -4,6 +4,7 @@ use Genesis\Application;
 use Genesis\Auth\Auth;
 use Genesis\Http\Request;
 use Illuminate\Support\Carbon;
+use eftec\bladeone\BladeOne;
 
 if (!function_exists('app')) {
     /**
@@ -212,12 +213,20 @@ if (!function_exists('view')) {
      *
      * @return string
      */
-    function view(string $filepath, array $args = []): string
+    function view(string $filepath, array $args = [])
     {
-        extract($args);
+
+
+
+        $views = app()->resourcesPath('views');
+        $cache = app()->resourcesPath('cache');
+        $blade = new BladeOne($views, $cache, BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
+        echo $blade->run($filepath, $args); // it calls /views/hello.blade.php
+        return '';
+        /* extract($args);
         ob_start();
         include app()->resourcesPath("views/$filepath.php");
-        return ob_get_clean();
+        return ob_get_clean();*/
     }
 }
 
