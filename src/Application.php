@@ -4,6 +4,7 @@ namespace Genesis;
 
 use Genesis\Container\Container;
 use Genesis\Contracts\Application as ApplicationInterface;
+use Genesis\Routing\RouteServiceProvider;
 use Genesis\Support\ServiceProvider;
 
 class Application extends Container implements ApplicationInterface
@@ -63,7 +64,6 @@ class Application extends Container implements ApplicationInterface
         }
         $this->registerBaseBindings();
         $this->registerBaseServiceProviders();
-        $this->registerCoreContainerAliases();
         $this->bootstrapApplication();
     }
 
@@ -171,27 +171,7 @@ class Application extends Container implements ApplicationInterface
      */
     protected function registerBaseServiceProviders(): void
     {
-        $this->register(new \Genesis\Routing\RouteServiceProvider($this));
-    }
-
-    /**
-     * Register the core class aliases in the container.
-     *
-     * @return void
-     */
-    protected function registerCoreContainerAliases(): void
-    {
-        $aliases = [
-            'auth'    => \Genesis\Auth\Auth::class,
-            'request' => \Genesis\Http\Request::class,
-            'url'     => \Genesis\Routing\URLGenerator::class,
-        ];
-
-        foreach ($aliases as $id => $instance) {
-            $this->singleton($id, function ($app) use ($instance) {
-                return $app->call($instance);
-            });
-        }
+        $this->register(new RouteServiceProvider($this));
     }
 
     /**

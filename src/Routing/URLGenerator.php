@@ -7,9 +7,9 @@ class URLGenerator
     /**
      * Assign the theme base URI
      */
-    public function __construct()
+    public function __construct($app)
     {
-        $this->baseURI = get_template_directory_uri();
+        $this->baseURI = $app->get('config')->get('url');
     }
 
     /**

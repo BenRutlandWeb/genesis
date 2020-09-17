@@ -23,6 +23,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->singleton('url', function ($app) {
+            return $app->call(\Genesis\Routing\URLGenerator::class, $app);
+        });
         require base_path('routes/ajax.php');
     }
 }
