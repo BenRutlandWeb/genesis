@@ -15,7 +15,7 @@ class RegisterProviders
      */
     public function bootstrap(Application $app): void
     {
-        $providers = $app->make('config')->get('providers');
+        $providers = $app->get('config')->get('providers');
 
         foreach ($providers as $provider) {
             $app->register($provider);

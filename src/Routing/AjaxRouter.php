@@ -4,16 +4,16 @@ namespace Genesis\Routing;
 
 class AjaxRouter extends Router
 {
-    public function listen(string $action, $callable, $guard = '')
+    /*    public function listen(string $action, $callable)
     {
-        return $this->routes->add($this->createRoute($action, $callable, $guard));
+        return $this->routes->add($this->createRoute($action, $callable));
     }
-
-    public function createRoute(string $action, $callable, $guard = '')
+*/
+    /*  public function createRoute(string $action, $callable)
     {
-        return (new AjaxRoute($action, $callable, $guard))->setRouter($this);
+        return (new AjaxRoute($action, $callable))->setRouter($this);
     }
-
+*/
     /**
      * The AJAX URL with the specified action.
      *

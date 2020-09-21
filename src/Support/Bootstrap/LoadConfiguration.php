@@ -17,8 +17,7 @@ class LoadConfiguration
     public function bootstrap(Application $app): void
     {
         $app->singleton('config', function ($app) {
-            $config = require $app->configPath('app.php');
-            return $app->call(Repository::class, $config);
+            return $app->call(Repository::class, require $app->configPath('app.php'));
         });
     }
 }

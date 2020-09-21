@@ -3,60 +3,48 @@
 namespace Genesis\Routing;
 
 use Closure;
-use Genesis\Routing\Route;
 use Genesis\Routing\RouteCollection;
 use Genesis\Routing\RouteRegistrar;
+use Illuminate\Support\Collection;
 use Psr\Container\ContainerInterface;
 
 class Router
 {
     protected $routes;
 
-    protected $groupStack = [];
+    public $groupStack = [];
 
     public function __construct(ContainerInterface $app)
     {
         $this->routes = new RouteCollection();
+        $this->groupStack = new Collection();
 
         $this->app = $app;
     }
-
     public function listen(string $action, $callable)
     {
         return $this->routes->add($this->createRoute($action, $callable));
     }
-
-
     public function createRoute(string $action, $callable)
     {
-        return (new AjaxRoute($action, $callable))->setRouter($this);
-    }
-
-    public function run()
-    {
-        dump($this->routes);
-        $this->routes->each(function ($route) {
-            return $route->run();
-        });
+        return (new AjaxRoute($action, $callable))
+            ->setRouter($this)
+            ->setAttributes($this->groupStack);
     }
 
     /**
      * Create a route group with shared attributes.
      *
-     * @param  \Closure|string  $routes
+     * @param  Closure|string  $routes
      * @return void
      */
     public function group($attributes, $routes)
     {
-        $this->groupStack[] = $attributes;
-        #$this->updateGroupStack($attributes);
+        $this->groupStack->add($attributes);
 
-        // Once we have updated the group stack, we'll load the provided routes and
-        // merge in the group's attributes when the routes are created. After we
-        // have created the routes, we will pop the attributes off the stack.
         $this->loadRoutes($routes);
 
-        array_pop($this->groupStack);
+        $this->groupStack->pop($attributes);
     }
 
     /**
@@ -73,6 +61,18 @@ class Router
         } else {
             require $routes;
         }
+    }
+
+    /**
+     * Register each route to the WordPress handlers.
+     *
+     * @return void
+     */
+    public function register(): void
+    {
+        $this->routes->each(function ($route) {
+            $route->register();
+        });
     }
 
     /**

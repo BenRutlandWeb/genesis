@@ -2,6 +2,8 @@
 
 namespace Genesis\Routing;
 
+use Illuminate\Support\Collection;
+
 class Route
 {
     /**
@@ -10,6 +12,8 @@ class Route
      * @var \Genesis\Routing\Router
      */
     protected $router;
+
+    protected $attributes = [];
 
     /**
      * Set the router instance.
@@ -22,5 +26,22 @@ class Route
         $this->router = $router;
 
         return $this;
+    }
+
+    public function setAttributes(Collection $attributes)
+    {
+        $this->attributes = collect($attributes);
+
+        return $this;
+    }
+
+    /**
+     * Register a route with WordPress handlers.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        # register REST route
     }
 }

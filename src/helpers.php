@@ -168,7 +168,7 @@ if (!function_exists('csrf_field')) {
      */
     function csrf_field(): string
     {
-        return app('csrf')->field();
+        return wp_nonce_field('_token', '_token');
     }
 }
 
@@ -210,11 +210,11 @@ if (!function_exists('view')) {
      * @param string  $view
      * @param array   $args
      *
-     * @return void
+     * @return string
      */
-    function view(string $view, array $args = []): void
+    function view(string $view, array $args = [])
     {
-        echo app('view')->make($view, $args);
+        return app('view')->make($view, $args);
     }
 }
 

@@ -19,7 +19,7 @@ class RegisterFacades
     {
         Facade::setFacadeApplication($app);
 
-        $aliases = $app->make('config')->get('aliases');
+        $aliases = $app->get('config')->get('aliases');
 
         AliasLoader::getInstance($aliases)->register();
     }

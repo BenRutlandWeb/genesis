@@ -13,8 +13,7 @@
   "require": {
     "php": "^7.0",
     "brw/wp-eloquent": "^1.0",
-    "illuminate/support": "^7.27",
-    "eftec/bladeone": "^3.47"
+    "illuminate/support": "^7.27"
   },
   "autoload": {
     "psr-4": {

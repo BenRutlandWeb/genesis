@@ -1,10 +1,10 @@
 <?php
 
-namespace Genesis\Routing;
+namespace Genesis\Http\Middleware;
 
 use Genesis\Http\Request;
 
-class CSRFToken
+class VerifyCsrfToken
 {
     /**
      * The Request object.
@@ -63,15 +63,5 @@ class CSRFToken
     public function getTokenFromRequest(): string
     {
         return $this->request->get('_token') ?: $this->request->header('X-CSRF-TOKEN') ?: '';
-    }
-
-    /**
-     * Return the CSRF input fields.
-     *
-     * @return string
-     */
-    public function field(): string
-    {
-        return wp_nonce_field('_token', '_token');
     }
 }

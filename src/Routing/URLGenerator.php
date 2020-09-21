@@ -7,6 +7,13 @@ use Psr\Container\ContainerInterface;
 class URLGenerator
 {
     /**
+     * The container instance.
+     *
+     * @var \Psr\Container\ContainerInterface
+     */
+    protected $app;
+
+    /**
      * Assign the theme root URI
      *
      * @param \Psr\Container\ContainerInterface $app
@@ -15,7 +22,7 @@ class URLGenerator
      */
     public function __construct(ContainerInterface $app)
     {
-        $this->url = $app->get('config')->get('url');
+        $this->app = $app;
     }
 
     /**
@@ -30,7 +37,7 @@ class URLGenerator
         if ($this->isValidUrl($path)) {
             return $path;
         }
-        return $this->url . '/assets/' . $path;
+        return $this->app->get('config')->get('url') . '/assets/' . $path;
     }
 
     /**
