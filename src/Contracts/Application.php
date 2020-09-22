@@ -2,6 +2,7 @@
 
 namespace Genesis\Contracts;
 
+use Illuminate\Contracts\Container\Container;
 use Genesis\Support\ServiceProvider;
 
 interface Application extends Container
@@ -20,12 +21,12 @@ interface Application extends Container
      *
      * @return \Genesis\Contracts\Application
      */
-    public static function getInstance(): Application;
+    #public static function getInstance(): Application;
 
     /**
      * Set the shared instance of the Application.
      *
      * @return \Genesis\Contracts\Application
      */
-    public static function setInstance(Application $app = null): Application;
+    #public static function setInstance(Application $app = null): Application;
 }

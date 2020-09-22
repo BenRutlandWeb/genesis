@@ -9,16 +9,16 @@ class RouteServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind('csrf', function ($app) {
-            return $app->call(\Genesis\Http\Middleware\VerifyCsrfToken::class, $app->get('request'));
+            return new \Genesis\Http\Middleware\VerifyCsrfToken($app->get('request'));
         });
         $this->app->singleton('route.ajax', function ($app) {
-            return $app->call(\Genesis\Routing\AjaxRouter::class, $app);
+            return new \Genesis\Routing\AjaxRouter($app);
         });
         $this->app->singleton('route.api', function ($app) {
-            return $app->call(\Genesis\Routing\Router::class, $app);
+            return new \Genesis\Routing\Router($app);
         });
         $this->app->singleton('url', function ($app) {
-            return $app->call(\Genesis\Routing\URLGenerator::class, $app);
+            return new \Genesis\Routing\URLGenerator($app);
         });
     }
 

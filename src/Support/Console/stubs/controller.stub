@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace {{ namespace }};
 
 use Genesis\Http\Request;
 use Genesis\Routing\Controller;
 
-class __CLASSNAME__ extends Controller
+class {{ class }} extends Controller
 {
     /**
      * Invoke the controller.

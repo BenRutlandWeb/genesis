@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Providers;
+namespace {{ namespace }};
 
 use Genesis\Support\ServiceProvider;
 
-class __CLASSNAME__ extends ServiceProvider
+class {{ class }} extends ServiceProvider
 {
     /**
      * Register the services.

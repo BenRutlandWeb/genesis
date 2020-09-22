@@ -2,7 +2,7 @@
 
 namespace Genesis;
 
-use Genesis\Container\Container;
+use Illuminate\Container\Container;
 use Genesis\Contracts\Application as ApplicationInterface;
 use Genesis\Routing\RouteServiceProvider;
 use Genesis\Support\ServiceProvider;
@@ -188,7 +188,7 @@ class Application extends Container implements ApplicationInterface
         ];
 
         foreach ($bootstrappers as $bootstrapper) {
-            $this->call($bootstrapper)->bootstrap($this);
+            $this->make($bootstrapper)->bootstrap($this);
         }
         $this->boot();
     }
@@ -282,15 +282,15 @@ class Application extends Container implements ApplicationInterface
         return static::$instance;
     }
 
-    /**
+    /*
      * Set the shared instance of the container.
      *
      * @param \Genesis\Contracts\Application|null $app
      *
      * @return \Genesis\Contracts\Application
      */
-    public static function setInstance(?ApplicationInterface $app = null): ApplicationInterface
-    {
-        return static::$instance = $app;
-    }
+    #public static function setInstance(?ApplicationInterface $app = null): ApplicationInterface
+    #{
+    #    return static::$instance = $app;
+    #}
 }
