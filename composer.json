@@ -1,6 +1,6 @@
 {
   "name": "brw/genesis",
-  "description": "WordPress theme framework for elegant development",
+  "description": "WordPress base theme build using the Genesis framework",
   "type": "project",
   "license": "MIT",
   "authors": [
