@@ -1,7 +1,24 @@
 {
+  "name": "brw/genesis",
+  "type": "project",
+  "description": "WordPress base theme built with the Genesis Framework",
+  "keywords": [
+    "WordPress",
+    "framework",
+    "theme",
+    "Genesis"
+  ],
   "require": {
     "brw/genesis-framework": "dev-main"
   },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ben Rutland",
+      "email": "info@benrutlandweb.co.uk",
+      "homepage": "https://github.com/BenRutlandWeb"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "App\\": "app/"
