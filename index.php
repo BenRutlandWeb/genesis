@@ -1,1 +1,2 @@
-Genesis
+<?php
+// Silence is golden.
