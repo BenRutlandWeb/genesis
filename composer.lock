@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BenRutlandWeb/genesis-framework.git",
-                "reference": "e45a8597bd3b5f4ed363d71dd98155a87c5ef6d6"
+                "reference": "5cccca70642d2d687b1a382fd13354d47c9b0c33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/e45a8597bd3b5f4ed363d71dd98155a87c5ef6d6",
-                "reference": "e45a8597bd3b5f4ed363d71dd98155a87c5ef6d6",
+                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/5cccca70642d2d687b1a382fd13354d47c9b0c33",
+                "reference": "5cccca70642d2d687b1a382fd13354d47c9b0c33",
                 "shasum": ""
             },
             "require": {
@@ -29,10 +29,10 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Genesis\\": "src/Genesis/"
+                    "Genesis\\": "src/genesis/"
                 },
                 "files": [
-                    "src/Genesis/Support/helpers.php"
+                    "src/genesis/Support/helpers.php"
                 ]
             },
             "license": [
@@ -55,7 +55,7 @@
                 "source": "https://github.com/BenRutlandWeb/genesis-framework/tree/main",
                 "issues": "https://github.com/BenRutlandWeb/genesis-framework/issues"
             },
-            "time": "2020-09-24T21:45:10+00:00"
+            "time": "2020-09-24T21:55:41+00:00"
         },
         {
             "name": "doctrine/inflector",

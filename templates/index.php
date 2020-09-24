@@ -6,7 +6,7 @@
 
         <?php while (have_posts()) : the_post(); ?>
 
-            <div class="prose mx-auto">
+            <div class="prose mx-auto my-16">
                 <h1><?php the_title(); ?></h1>
                 <?php the_content(); ?>
             </div>
