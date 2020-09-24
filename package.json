@@ -11,11 +11,16 @@
     "postcss-cli": "^8.0.0",
     "postcss-import": "^12.0.1",
     "postcss-nested": "^5.0.0",
-    "tailwindcss": "^1.8.10"
+    "tailwindcss": "^1.8.10",
+    "parcel-bundler": "^1.12.4"
   },
   "scripts": {
-    "watch": "postcss src/css/*.css -d assets/css -w",
-    "css": "postcss src/css/*.css -d assets/css"
+    "watch": "npm run watch-css | npm run watch-js",
+    "watch-css": "postcss src/css/*.css -d assets/css -w",
+    "watch-js": "parcel watch src/js/*.js -d assets/js --no-hmr --no-source-maps",
+    "build": "npm run build-css && npm run build-js",
+    "build-css": "env NODE_ENV=production postcss src/css/*.css -d assets/css",
+    "build-js": "env NODE_ENV=production parcel build src/js/*.js -d assets/js --no-source-maps"
   },
   "repository": {
     "type": "git",
