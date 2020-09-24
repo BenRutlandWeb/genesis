@@ -1,34 +1,20 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<?php echo view('partials.header'); ?>
 
-<head>
-    <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <?php wp_head(); ?>
-</head>
+<?php if (have_posts()) : ?>
 
-<body <?php body_class(); ?>>
+    <div class="container">
 
-    <?php wp_body_open(); ?>
+        <?php while (have_posts()) : the_post(); ?>
 
+            <div class="prose mx-auto">
+                <h1><?php the_title(); ?></h1>
+                <?php the_content(); ?>
+            </div>
 
-    <div class="prose">
-        <h1 class="bg-black">Genesis</h1>
-        <p>WordPress base theme built with the Genesis Framework</p>
+        <?php endwhile; ?>
+
     </div>
 
-    <footer class="footer py-5">
-        <div class="wrapper">
-            <nav class="d-flex">
-                <ul class="d-contents list-unstyled">
-                    <li><a href="#" class="pr-4">Link</a></li>
-                    <li><a href="#" class="px-4">Link</a></li>
-                    <li><a href="#" class="pl-4">Link</a></li>
-                </ul>
-            </nav>
-        </div>
-    </footer>
-    <?php wp_footer(); ?>
-</body>
+<?php endif; ?>
 
-</html>
+<?php echo view('partials.footer'); ?>

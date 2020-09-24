@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BenRutlandWeb/genesis-framework.git",
-                "reference": "8ab455a620fbe0de149fc7dc4cd01e5c9be96dbf"
+                "reference": "2e12e6c99cec50c44e3de73d197a7e37308d6b78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/8ab455a620fbe0de149fc7dc4cd01e5c9be96dbf",
-                "reference": "8ab455a620fbe0de149fc7dc4cd01e5c9be96dbf",
+                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/2e12e6c99cec50c44e3de73d197a7e37308d6b78",
+                "reference": "2e12e6c99cec50c44e3de73d197a7e37308d6b78",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "source": "https://github.com/BenRutlandWeb/genesis-framework/tree/main",
                 "issues": "https://github.com/BenRutlandWeb/genesis-framework/issues"
             },
-            "time": "2020-09-24T19:21:31+00:00"
+            "time": "2020-09-24T21:27:01+00:00"
         },
         {
             "name": "doctrine/inflector",

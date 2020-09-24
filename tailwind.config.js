@@ -5,6 +5,9 @@ module.exports = {
   },
   purge: ["./templates/**/*.php"],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {},
   },
   variants: {},

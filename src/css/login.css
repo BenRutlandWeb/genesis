@@ -2,7 +2,4 @@
 
 @import "tailwindcss/components";
 
-@import "components/header.css";
-@import "components/footer.css";
-
 @import "tailwindcss/utilities";
