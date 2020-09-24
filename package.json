@@ -6,21 +6,23 @@
   "dependencies": {},
   "devDependencies": {
     "@tailwindcss/typography": "^0.2.0",
+    "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.4",
     "postcss": "^8.0.9",
     "postcss-cli": "^8.0.0",
     "postcss-import": "^12.0.1",
     "postcss-nested": "^5.0.0",
-    "tailwindcss": "^1.8.10",
-    "parcel-bundler": "^1.12.4"
+    "tailwindcss": "^1.8.10"
   },
   "scripts": {
-    "watch": "npm run watch-css | npm run watch-js",
+    "watch": "npm-run-all -p -r watch-css watch-js",
     "watch-css": "postcss src/css/*.css -d assets/css -w",
     "watch-js": "parcel watch src/js/*.js -d assets/js --no-hmr --no-source-maps",
-    "build": "npm run build-css && npm run build-js",
-    "build-css": "env NODE_ENV=production postcss src/css/*.css -d assets/css",
-    "build-js": "env NODE_ENV=production parcel build src/js/*.js -d assets/js --no-source-maps"
+    "build": "npm-run-all build-css build-js",
+    "build-css": "cross-env NODE_ENV=production postcss src/css/*.css -d assets/css",
+    "build-js": "cross-env NODE_ENV=production parcel build src/js/*.js -d assets/js --no-source-maps"
   },
   "repository": {
     "type": "git",
