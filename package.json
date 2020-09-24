@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@tailwindcss/typography": "^0.2.0",
     "cssnano": "^4.1.10",
+    "postcss": "^8.0.9",
     "postcss-cli": "^8.0.0",
     "postcss-import": "^12.0.1",
-    "@tailwindcss/typography": "^0.2.0",
+    "postcss-nested": "^5.0.0",
     "tailwindcss": "^1.8.10"
   },
   "scripts": {
@@ -17,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BenRutlandWeb/Genesis.git"
+    "url": "git+https://github.com/BenRutlandWeb/genesis.git"
   },
   "keywords": [
     "WordPress",
@@ -28,7 +30,7 @@
   "author": "Ben Rutland",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BenRutlandWeb/Genesis/issues"
+    "url": "https://github.com/BenRutlandWeb/genesis/issues"
   },
-  "homepage": "https://github.com/BenRutlandWeb/Genesis#readme"
+  "homepage": "https://github.com/BenRutlandWeb/genesis#readme"
 }
