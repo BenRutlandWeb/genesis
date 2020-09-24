@@ -70,6 +70,7 @@ class Assets
         // css
         wp_enqueue_style('genesis-login', asset('css/login.css'), [], null);
 
+        // js
         wp_enqueue_script('genesis-login', asset('js/login.js'), [], null, true);
     }
 
