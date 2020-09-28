@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Genesis\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class AdminServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
@@ -13,7 +13,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->instance('assets', new \App\Services\Assets());
-        $this->app->instance('wp.tidy', new \App\Services\TidyHead());
+        $this->app->instance('wp.blockmenu', new \App\Services\ReusableBlockMenu());
     }
 }

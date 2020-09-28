@@ -45,6 +45,7 @@ return [
         /*
          * Application Service Providers...
          */
+        \App\Providers\AdminServiceProvider::class,
         \App\Providers\AppServiceProvider::class,
     ],
 
@@ -64,6 +65,7 @@ return [
         'Auth'  => \Genesis\Support\Facades\Auth::class,
         'File'  => \Genesis\Support\Facades\File::class,
         'Str'   => \Illuminate\Support\Str::class,
+        'URL'  => \Genesis\Support\Facades\URL::class,
         'View'  => \Genesis\Support\Facades\View::class,
     ],
 ];
