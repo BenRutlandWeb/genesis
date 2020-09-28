@@ -18,10 +18,10 @@
   },
   "scripts": {
     "watch": "npm-run-all -p -r watch-css watch-js",
-    "watch-css": "postcss src/css/*.css -d assets/css -w --config config/",
+    "watch-css": "postcss src/css/*.css -d assets/css -w",
     "watch-js": "parcel watch src/js/*.js -d assets/js --no-hmr --no-source-maps",
     "build": "npm-run-all build-css build-js",
-    "build-css": "cross-env NODE_ENV=production postcss src/css/*.css -d assets/css --config config/",
+    "build-css": "cross-env NODE_ENV=production postcss src/css/*.css -d assets/css",
     "build-js": "cross-env NODE_ENV=production parcel build src/js/*.js -d assets/js --no-source-maps"
   },
   "repository": {
