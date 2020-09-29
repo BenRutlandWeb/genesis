@@ -22,11 +22,5 @@
     "psr-4": {
       "App\\": "app/"
     }
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/BenRutlandWeb/genesis-framework"
-    }
-  ]
+  }
 }
