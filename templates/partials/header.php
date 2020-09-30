@@ -35,11 +35,3 @@
         </div>
     </header>
     <main class='flex-1'>
-        <ul>
-            <li>Login: <?php echo url()->login(); ?></li>
-            <li>Logout: <?php echo url()->logout(); ?></li>
-            <li>Home: <?php echo url()->home(); ?></li>
-            <li>Previous: <?php echo url()->previous(); ?></li>
-            <li>Current: // use request object</li>
-            <li>full: // use request object</li>
-        </ul>

@@ -1,29 +1,30 @@
 <?php
 
+global $wpdb;
+
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | Theme URL
+    | Database Connection
     |--------------------------------------------------------------------------
     |
-    | This URL is used to properly generate URLs when using for assets and other
-    | resources that require a URI to the theme directory.
+    | Here we set the database connection for your application. This defaults to
+    | the WordPress connection details.
     |
     */
 
-    'url' => get_template_directory_uri(),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Ajax URL
-    |--------------------------------------------------------------------------
-    |
-    | This URL is used to send AJAX requests to.
-    |
-    */
-
-    'ajax' => admin_url('admin-ajax.php'),
+    'db' => [
+        'driver'    => 'mysql',
+        'prefix'    => $wpdb->prefix,
+        'host'      => DB_HOST,
+        'database'  => DB_NAME,
+        'username'  => DB_USER,
+        'password'  => DB_PASSWORD,
+        'port'      => '3306',
+        'charset'   => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -37,14 +38,6 @@ return [
     */
 
     'providers' => [
-        /*
-         * Genesis Framework Service Providers...
-         */
-
-
-        /*
-         * Application Service Providers...
-         */
         \App\Providers\AdminServiceProvider::class,
         \App\Providers\AppServiceProvider::class,
     ],
@@ -61,11 +54,13 @@ return [
     */
 
     'aliases' => [
-        'Arr'   => \Illuminate\Support\Arr::class,
-        'Auth'  => \Genesis\Support\Facades\Auth::class,
-        'File'  => \Genesis\Support\Facades\File::class,
-        'Str'   => \Illuminate\Support\Str::class,
-        'URL'  => \Genesis\Support\Facades\URL::class,
-        'View'  => \Genesis\Support\Facades\View::class,
+        'Arr'     => \Illuminate\Support\Arr::class,
+        'Auth'    => \Genesis\Support\Facades\Auth::class,
+        'DB'      => \Genesis\Support\Facades\DB::class,
+        'File'    => \Genesis\Support\Facades\File::class,
+        'Request' => \Genesis\Support\Facades\Request::class,
+        'Str'     => \Illuminate\Support\Str::class,
+        'URL'     => \Genesis\Support\Facades\URL::class,
+        'View'    => \Genesis\Support\Facades\View::class,
     ],
 ];

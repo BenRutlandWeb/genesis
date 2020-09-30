@@ -1,18 +1,21 @@
+<?php
+
+use Genesis\Database\Models\Page;
+
+$post = Page::find(get_the_ID());
+
+?>
+
 <?php echo view('partials.header'); ?>
 
-<?php if (have_posts()) : ?>
+<?php if ($post) : ?>
 
     <div class="container">
-
-        <?php while (have_posts()) : the_post(); ?>
-
-            <div class="prose mx-auto my-16">
-                <h1><?php the_title(); ?></h1>
-                <?php the_content(); ?>
-            </div>
-
-        <?php endwhile; ?>
-
+        <div class="prose mx-auto my-16">
+            <h1><?php echo $post->title; ?></h1>
+            <?php echo $post->content; ?>
+            <?php printf(__('Posted: %s', 'genesis'), $post->created_at->diffForHumans()); ?>
+        </div>
     </div>
 
 <?php endif; ?>
