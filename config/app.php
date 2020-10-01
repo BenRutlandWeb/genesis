@@ -61,11 +61,12 @@ return [
     */
 
     'aliases' => [
-        'Arr'   => \Illuminate\Support\Arr::class,
-        'Auth'  => \Genesis\Support\Facades\Auth::class,
-        'File'  => \Genesis\Support\Facades\File::class,
-        'Str'   => \Illuminate\Support\Str::class,
-        'URL'  => \Genesis\Support\Facades\URL::class,
-        'View'  => \Genesis\Support\Facades\View::class,
+        'Arr'      => \Illuminate\Support\Arr::class,
+        'Auth'     => \Genesis\Support\Facades\Auth::class,
+        'Console'  => \Genesis\Support\Facades\Console::class,
+        'File'     => \Genesis\Support\Facades\File::class,
+        'Str'      => \Illuminate\Support\Str::class,
+        'URL'      => \Genesis\Support\Facades\URL::class,
+        'View'     => \Genesis\Support\Facades\View::class,
     ],
 ];
