@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Genesis\Http\Request;
 use Genesis\Routing\Controller;
+use Genesis\Database\Models\Post;
 
 class TestController extends Controller
 {
@@ -16,6 +17,6 @@ class TestController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $request;
+        return Post::find($request->id);
     }
 }
