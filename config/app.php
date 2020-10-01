@@ -56,6 +56,7 @@ return [
     'aliases' => [
         'Arr'     => \Illuminate\Support\Arr::class,
         'Auth'    => \Genesis\Support\Facades\Auth::class,
+        'Console' => \Genesis\Support\Facades\Console::class,
         'DB'      => \Genesis\Support\Facades\DB::class,
         'File'    => \Genesis\Support\Facades\File::class,
         'Request' => \Genesis\Support\Facades\Request::class,
