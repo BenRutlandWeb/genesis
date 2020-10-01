@@ -13,8 +13,7 @@ use Genesis\Support\Facades\Console;
 |
 */
 
-Console::command('tell a joke', function () {
-
+Console::command('joke', function () {
     $response = wp_remote_get('https://official-joke-api.appspot.com/jokes/random');
 
     $json = json_decode(wp_remote_retrieve_body($response));
@@ -22,4 +21,4 @@ Console::command('tell a joke', function () {
     $this->ask($json->setup);
 
     $this->line($json->punchline);
-});
+})->describe('Tell a (really bad) joke');
