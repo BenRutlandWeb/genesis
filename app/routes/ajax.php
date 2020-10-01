@@ -1,5 +1,8 @@
 <?php
 
+use Genesis\Http\Request;
+use Genesis\Support\Facades\Ajax;
+
 /*
 |--------------------------------------------------------------------------
 | AJAX Routes
@@ -10,3 +13,10 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Ajax::middleware(['auth', 'guest'])->group(function () {
+
+
+    Ajax::listen('test', \App\Controllers\TestController::class);
+});
