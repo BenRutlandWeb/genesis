@@ -59,6 +59,7 @@ return [
         'Auth'    => \Genesis\Support\Facades\Auth::class,
         'Console' => \Genesis\Support\Facades\Console::class,
         'DB'      => \Genesis\Support\Facades\DB::class,
+        'Event'   => \Genesis\Support\Facades\Event::class,
         'File'    => \Genesis\Support\Facades\File::class,
         'Request' => \Genesis\Support\Facades\Request::class,
         'Str'     => \Illuminate\Support\Str::class,

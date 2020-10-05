@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->instance('assets', new \App\Services\Assets());
+        $this->app->instance('menus', new \App\Services\RegisterMenus());
         $this->app->instance('wp.tidy', new \App\Services\TidyHead());
     }
 }
