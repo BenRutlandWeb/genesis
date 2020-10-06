@@ -6,7 +6,7 @@ $post = Page::find(get_the_ID());
 
 ?>
 
-<?php echo view('partials.header'); ?>
+<?php echo view('partials.head'); ?>
 
 <?php if ($post) : ?>
 
@@ -20,4 +20,4 @@ $post = Page::find(get_the_ID());
 
 <?php endif; ?>
 
-<?php echo view('partials.footer'); ?>
+<?php echo view('partials.foot'); ?>

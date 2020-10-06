@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BenRutlandWeb/genesis-framework.git",
-                "reference": "fca4e2cc9d6328c37d08991afab48541155444ac"
+                "reference": "4cb9a38d5a656a7e06ab81cfb5ada461f37039d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/fca4e2cc9d6328c37d08991afab48541155444ac",
-                "reference": "fca4e2cc9d6328c37d08991afab48541155444ac",
+                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/4cb9a38d5a656a7e06ab81cfb5ada461f37039d6",
+                "reference": "4cb9a38d5a656a7e06ab81cfb5ada461f37039d6",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 "source": "https://github.com/BenRutlandWeb/genesis-framework/tree/main",
                 "issues": "https://github.com/BenRutlandWeb/genesis-framework/issues"
             },
-            "time": "2020-10-05T20:54:51+00:00"
+            "time": "2020-10-06T20:38:39+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -144,7 +144,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.8.0",
+            "version": "v8.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -194,7 +194,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v8.8.0",
+            "version": "v8.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -241,16 +241,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.8.0",
+            "version": "v8.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "37ec3d86c2761628957b6d762ecd3bd27da754bd"
+                "reference": "82e67fb6a44ac648b7b3bae53ee51bbdd4d2eab0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/37ec3d86c2761628957b6d762ecd3bd27da754bd",
-                "reference": "37ec3d86c2761628957b6d762ecd3bd27da754bd",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/82e67fb6a44ac648b7b3bae53ee51bbdd4d2eab0",
+                "reference": "82e67fb6a44ac648b7b3bae53ee51bbdd4d2eab0",
                 "shasum": ""
             },
             "require": {
@@ -281,20 +281,20 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2020-09-16T13:57:35+00:00"
+            "time": "2020-10-06T11:28:03+00:00"
         },
         {
             "name": "illuminate/database",
-            "version": "v8.8.0",
+            "version": "v8.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "c81f98a48cd908c7c5174ae49fe8d2465a9da606"
+                "reference": "119f85ee2e19ed56f8782de0e2ed4086bf7f2636"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/c81f98a48cd908c7c5174ae49fe8d2465a9da606",
-                "reference": "c81f98a48cd908c7c5174ae49fe8d2465a9da606",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/119f85ee2e19ed56f8782de0e2ed4086bf7f2636",
+                "reference": "119f85ee2e19ed56f8782de0e2ed4086bf7f2636",
                 "shasum": ""
             },
             "require": {
@@ -345,11 +345,11 @@
                 "orm",
                 "sql"
             ],
-            "time": "2020-10-02T14:17:12+00:00"
+            "time": "2020-10-06T14:04:52+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.8.0",
+            "version": "v8.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -391,16 +391,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v8.8.0",
+            "version": "v8.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "f7a139ff6adf8fb6afffe895195a9de04c12a128"
+                "reference": "8baf701232dfc328ec6ffec68afc32a80dacae2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/f7a139ff6adf8fb6afffe895195a9de04c12a128",
-                "reference": "f7a139ff6adf8fb6afffe895195a9de04c12a128",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/8baf701232dfc328ec6ffec68afc32a80dacae2f",
+                "reference": "8baf701232dfc328ec6ffec68afc32a80dacae2f",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2020-09-17T18:04:00+00:00"
+            "time": "2020-10-06T14:18:33+00:00"
         },
         {
             "name": "nesbot/carbon",

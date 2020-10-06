@@ -1,4 +1,4 @@
-<?php echo view('partials.header'); ?>
+<?php echo view('partials.head'); ?>
 
 <div class="container">
     <div class="prose mx-auto my-16">
@@ -12,4 +12,4 @@
     </div>
 </div>
 
-<?php echo view('partials.footer'); ?>
+<?php echo view('partials.foot'); ?>
