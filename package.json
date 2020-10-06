@@ -7,22 +7,17 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.2.0",
     "cross-env": "^7.0.2",
-    "cssnano": "^4.1.10",
-    "npm-run-all": "^4.1.5",
-    "parcel-bundler": "^1.12.4",
-    "postcss": "^8.0.9",
-    "postcss-cli": "^8.0.0",
+    "laravel-mix": "^6.0.0-beta.4",
     "postcss-import": "^12.0.1",
-    "postcss-nested": "^5.0.0",
-    "tailwindcss": "^1.8.10"
+    "postcss-nested": "^5.0.1",
+    "tailwindcss": "^1.8.11"
   },
   "scripts": {
-    "watch": "npm-run-all -p -r watch-css watch-js",
-    "watch-css": "postcss src/css/*.css -d assets/css -w",
-    "watch-js": "parcel watch src/js/*.js -d assets/js --no-hmr --no-source-maps",
-    "build": "npm-run-all build-css build-js",
-    "build-css": "cross-env NODE_ENV=production postcss src/css/*.css -d assets/css",
-    "build-js": "cross-env NODE_ENV=production parcel build src/js/*.js -d assets/js --no-source-maps"
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "repository": {
     "type": "git",

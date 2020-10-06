@@ -26,10 +26,10 @@ class Assets
     public function enqueueAppAssets(): void
     {
         // css
-        wp_enqueue_style('genesis-app', asset('css/app.css'), [], null);
+        wp_enqueue_style('genesis-app', mix('css/app.css'), [], null);
 
         // js
-        wp_enqueue_script('genesis-app', asset('js/app.js'), [], null, true);
+        wp_enqueue_script('genesis-app', mix('js/app.js'), [], null, true);
     }
 
     /**
@@ -42,10 +42,10 @@ class Assets
     public function enqueueAdminAssets(string $hookSuffix): void
     {
         // css
-        wp_enqueue_style('genesis-admin', asset('css/admin.css'), [], null);
+        wp_enqueue_style('genesis-admin', mix('css/admin.css'), [], null);
 
         // js
-        wp_enqueue_script('genesis-admin', asset('js/admin.js'), [], null, true);
+        wp_enqueue_script('genesis-admin', mix('js/admin.js'), [], null, true);
     }
 
     /**
@@ -57,7 +57,7 @@ class Assets
     {
         add_theme_support('editor-styles');
 
-        add_editor_style(asset('css/editor.css', false));
+        add_editor_style(mix('css/editor.css', false));
     }
 
     /**
@@ -68,10 +68,10 @@ class Assets
     public function enqueueLoginAssets(): void
     {
         // css
-        wp_enqueue_style('genesis-login', asset('css/login.css'), [], null);
+        wp_enqueue_style('genesis-login', mix('css/login.css'), [], null);
 
         // js
-        wp_enqueue_script('genesis-login', asset('js/login.js'), [], null, true);
+        wp_enqueue_script('genesis-login', mix('js/login.js'), [], null, true);
     }
 
     /**

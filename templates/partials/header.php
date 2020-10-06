@@ -8,8 +8,6 @@
                 <p class="font-bold"><?php _e('Genesis', 'genesis'); ?></p>
             </a>
 
-            <?php wp_nav_menu(['theme_location' => 'primary_menu']); ?>
-
             <?php if (auth()->check()) : ?>
 
                 <a href="<?php echo url()->logout(); ?>" class="underline text-blue-500">
