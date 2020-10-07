@@ -1,0 +1,32 @@
+.container {
+  display: grid;
+  grid:
+    auto /
+    [start]
+    minmax(
+      theme("container.gutter"),
+      calc((100% - theme("container.wideWidth")) / 2)
+    )
+    [wide-start]
+    1fr
+    [content-start]
+    minmax(auto, theme("container.contentWidth"))
+    [content-end]
+    1fr
+    [wide-end]
+    minmax(
+      theme("container.gutter"),
+      calc((100% - theme("container.wideWidth")) / 2)
+    )
+    [end];
+
+  & > * {
+    grid-column: content-start / content-end;
+  }
+  & > .alignwide {
+    grid-column: wide-start / wide-end;
+  }
+  & > .alignfull {
+    grid-column: start / end;
+  }
+}

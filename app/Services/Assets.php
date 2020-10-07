@@ -26,7 +26,7 @@ class Assets
     public function enqueueAppAssets(): void
     {
         // css
-        wp_dequeue_style('wp-block-library');
+        //wp_dequeue_style('wp-block-library');
 
         wp_enqueue_style('genesis-app', mix('css/app.css'), [], null);
 

@@ -2,13 +2,6 @@ module.exports = function ({ addComponents, theme }) {
   const wpUtilities = {};
 
   /**
-   * Text alignment
-   */
-  for (let textAlign of ["left", "center", "right", "justify"]) {
-    wpUtilities[`.has-text-align-${textAlign}`] = { textAlign };
-  }
-
-  /**
    * Editor color palette
    */
   for (let [key, color] of Object.entries(theme("editorColorPalette", {}))) {

@@ -11,11 +11,10 @@ $post = Page::find(get_the_ID());
 <?php if ($post) : ?>
 
     <div class="container">
-        <div class="prose mx-auto my-16">
-            <h1><?php echo $post->title; ?></h1>
-            <?php echo $post->content; ?>
-            <?php printf(__('Posted: %s', 'genesis'), $post->created_at->diffForHumans()); ?>
-        </div>
+        <h1><?php echo $post->title; ?></h1>
+        <p class="alignwide"><?php printf(__('Posted: %s', 'genesis'), $post->created_at->diffForHumans()); ?></p>
+        <?php echo $post->content; ?>
+
     </div>
 
 <?php endif; ?>

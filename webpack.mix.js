@@ -1,5 +1,9 @@
 const mix = require("laravel-mix");
-const postCss = [require("postcss-import"), require("tailwindcss")];
+const postCss = [
+  require("postcss-import"),
+  require("postcss-nested"),
+  require("tailwindcss"),
+];
 
 /*
  |--------------------------------------------------------------------------

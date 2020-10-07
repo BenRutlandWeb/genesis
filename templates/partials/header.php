@@ -1,5 +1,5 @@
-<header class="header">
-    <div class="container flex justify-between">
+<header class="header container">
+    <div class="flex justify-between alignwide">
         <a href="<?php echo url()->home(); ?>">
             <p class="font-bold"><?php _e('Genesis', 'genesis'); ?></p>
         </a>

@@ -9,7 +9,9 @@ module.exports = {
   },
   theme: {
     container: {
-      center: true,
+      contentWidth: "45rem",
+      wideWidth: "60rem",
+      gutter: "1rem",
     },
     editorColorPalette: {
       primary: "var(--primary)",
@@ -24,4 +26,7 @@ module.exports = {
   },
   variants: {},
   plugins: [require("./tailwindwp.plugin")],
+  corePlugins: {
+    container: false,
+  },
 };
