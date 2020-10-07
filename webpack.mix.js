@@ -1,4 +1,5 @@
 const mix = require("laravel-mix");
+const postCss = [require("postcss-import"), require("tailwindcss")];
 
 /*
  |--------------------------------------------------------------------------
@@ -9,18 +10,14 @@ const mix = require("laravel-mix");
  | for your Genesis theme.
  |
  */
-const cssWithTailwind = [require("postcss-import"), require("tailwindcss")];
-const cssWithoutTailwind = [require("postcss-import")];
 
 mix
   .js("src/js/admin.js", "js")
   .js("src/js/app.js", "js")
-  .js("src/js/login.js", "js")
 
-  .postCss("src/css/admin.css", "css", cssWithoutTailwind)
-  .postCss("src/css/app.css", "css", cssWithTailwind)
-  .postCss("src/css/editor.css", "css", cssWithoutTailwind)
-  .postCss("src/css/login.css", "css", cssWithTailwind)
+  .postCss("src/css/admin.css", "css", postCss)
+  .postCss("src/css/app.css", "css", postCss)
+  .postCss("src/css/editor.css", "css", postCss)
 
   .setPublicPath("assets")
 

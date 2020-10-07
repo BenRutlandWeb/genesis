@@ -11,11 +11,11 @@ class Assets
      */
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', [static::class, 'enqueueAppAssets']);
-        add_action('admin_enqueue_scripts', [static::class, 'enqueueAdminAssets']);
-        add_action('admin_init', [static::class, 'enqueueEditorAssets']);
-        add_action('login_enqueue_scripts', [static::class, 'enqueueLoginAssets']);
-        add_filter('script_loader_tag', [static::class, 'addScriptModuleAttribute'], 10, 3);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueAppAssets']);
+        add_action('login_enqueue_scripts', [$this, 'enqueueAppAssets']);
+        add_action('admin_init', [$this, 'enqueueEditorAssets']);
+        add_filter('script_loader_tag', [$this, 'addScriptModuleAttribute'], 10, 3);
     }
 
     /**
@@ -26,10 +26,15 @@ class Assets
     public function enqueueAppAssets(): void
     {
         // css
+        wp_dequeue_style('wp-block-library');
+
         wp_enqueue_style('genesis-app', mix('css/app.css'), [], null);
 
         // js
         wp_enqueue_script('genesis-app', mix('js/app.js'), [], null, true);
+
+        // ajax object
+        $this->inlineAjaxObject('genesis-app');
     }
 
     /**
@@ -46,6 +51,9 @@ class Assets
 
         // js
         wp_enqueue_script('genesis-admin', mix('js/admin.js'), [], null, true);
+
+        // ajax object
+        $this->inlineAjaxObject('genesis-admin');
     }
 
     /**
@@ -57,21 +65,7 @@ class Assets
     {
         add_theme_support('editor-styles');
 
-        add_editor_style(mix('css/editor.css', false));
-    }
-
-    /**
-     * Enqueue editor assets
-     *
-     * @return void
-     */
-    public function enqueueLoginAssets(): void
-    {
-        // css
-        wp_enqueue_style('genesis-login', mix('css/login.css'), [], null);
-
-        // js
-        wp_enqueue_script('genesis-login', mix('js/login.js'), [], null, true);
+        add_editor_style(asset('css/editor.css', false));
     }
 
     /**
@@ -89,5 +83,19 @@ class Assets
             return $tag;
         }
         return '<script type="module" src="' . esc_url($src) . '"></script>';
+    }
+
+    /**
+     * Inline the ajax object to guarantee availablity anwhere in the JS.
+     *
+     * @return void
+     */
+    public function inlineAjaxObject(string $dependency): void
+    {
+        $object = [
+            'url'       => ajax(),
+            'csrfToken' => csrf_token(),
+        ];
+        wp_add_inline_script($dependency, 'const AJAX = ' . json_encode($object), null);
     }
 }

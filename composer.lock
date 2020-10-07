@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BenRutlandWeb/genesis-framework.git",
-                "reference": "502a2301969795509e5678b51e7982768a31f2ad"
+                "reference": "3f3187f0a09cd8efba5b0b8d40f04f3d4310bfe1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/502a2301969795509e5678b51e7982768a31f2ad",
-                "reference": "502a2301969795509e5678b51e7982768a31f2ad",
+                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/3f3187f0a09cd8efba5b0b8d40f04f3d4310bfe1",
+                "reference": "3f3187f0a09cd8efba5b0b8d40f04f3d4310bfe1",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 "source": "https://github.com/BenRutlandWeb/genesis-framework/tree/main",
                 "issues": "https://github.com/BenRutlandWeb/genesis-framework/issues"
             },
-            "time": "2020-10-06T22:31:49+00:00"
+            "time": "2020-10-07T17:46:41+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -677,12 +677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "04c3a31fe8ea94b42c9e2d1acc93d19782133b00"
+                "reference": "ae789a8a2ad189ce7e8216942cdb9b77319f5eb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/04c3a31fe8ea94b42c9e2d1acc93d19782133b00",
-                "reference": "04c3a31fe8ea94b42c9e2d1acc93d19782133b00",
+                "url": "https://api.github.com/repos/symfony/console/zipball/ae789a8a2ad189ce7e8216942cdb9b77319f5eb8",
+                "reference": "ae789a8a2ad189ce7e8216942cdb9b77319f5eb8",
                 "shasum": ""
             },
             "require": {

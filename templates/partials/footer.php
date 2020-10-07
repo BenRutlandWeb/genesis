@@ -1,4 +1,3 @@
-</main>
 <footer class="footer">
     <p>
         <?php
@@ -13,7 +12,3 @@
         ?>
     </p>
 </footer>
-<?php wp_footer(); ?>
-</body>
-
-</html>

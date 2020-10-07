@@ -1,28 +1,22 @@
-<body <?php body_class('flex flex-col h-screen'); ?>>
+<header class="header">
+    <div class="container flex justify-between">
+        <a href="<?php echo url()->home(); ?>">
+            <p class="font-bold"><?php _e('Genesis', 'genesis'); ?></p>
+        </a>
 
-    <?php wp_body_open(); ?>
+        <?php if (auth()->check()) : ?>
 
-    <header class="header">
-        <div class="container flex justify-between">
-            <a href="<?php echo url()->home(); ?>">
-                <p class="font-bold"><?php _e('Genesis', 'genesis'); ?></p>
+            <a href="<?php echo url()->logout(); ?>" class="underline text-blue-500">
+                <?php _e('Log out', 'genesis'); ?>
             </a>
 
-            <?php if (auth()->check()) : ?>
+        <?php else : ?>
 
-                <a href="<?php echo url()->logout(); ?>" class="underline text-blue-500">
-                    <?php _e('Log out', 'genesis'); ?>
-                </a>
+            <a href="<?php echo url()->login(); ?>" class="underline text-blue-500">
+                <?php _e('Login', 'genesis'); ?>
+            </a>
 
-            <?php else : ?>
+        <?php endif; ?>
 
-                <a href="<?php echo url()->login(); ?>" class="underline text-blue-500">
-                    <?php _e('Login', 'genesis'); ?>
-                </a>
-
-            <?php endif; ?>
-
-
-        </div>
-    </header>
-    <main class='flex-1'>
+    </div>
+</header>

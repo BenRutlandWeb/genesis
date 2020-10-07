@@ -6,3 +6,5 @@
 @import "components/footer.css";
 
 @import "tailwindcss/utilities";
+
+@import "variables.css";

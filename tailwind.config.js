@@ -3,13 +3,25 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ["./templates/**/*.php"],
+  purge: {
+    layers: ["base", "utilities"],
+    content: ["./templates/**/*.php"],
+  },
   theme: {
     container: {
       center: true,
     },
+    editorColorPalette: {
+      primary: "var(--primary)",
+      secondary: "var(--secondary)",
+    },
+    editorFontSizes: {
+      small: "1rem",
+      medium: "1.25rem",
+      large: "1.5rem",
+    },
     extend: {},
   },
   variants: {},
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("./tailwindwp.plugin")],
 };

@@ -1,0 +1,16 @@
+:root {
+  --primary: green;
+  --secondary: pink;
+}
+
+:root[data-prefers-color-scheme="dark"] {
+  --primary: darkgreen;
+  --secondary: purple;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: darkgreen;
+    --secondary: purple;
+  }
+}
