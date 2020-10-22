@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Services;
+namespace App\Listeners;
 
-class Assets
+use Genesis\Events\Dispatcher;
+
+class EnqueueScripts
 {
     /**
-     * Add actions to load the theme assets
+     * Register the listeners for the subscriber.
+     *
+     * @param \Genesis\Events\Dispatcher $events
      *
      * @return void
      */
-    public function __construct()
+    public function subscribe(Dispatcher $events): void
     {
-        add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
-        add_action('wp_enqueue_scripts', [$this, 'enqueueAppAssets']);
-        add_action('login_enqueue_scripts', [$this, 'enqueueAppAssets']);
-        add_action('admin_init', [$this, 'enqueueEditorAssets']);
-        add_filter('script_loader_tag', [$this, 'addScriptModuleAttribute'], 10, 3);
+        $events->listen('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
+        $events->listen('wp_enqueue_scripts', [$this, 'enqueueAppAssets']);
+        $events->listen('login_enqueue_scripts', [$this, 'enqueueAppAssets']);
+        $events->listen('admin_init', [$this, 'enqueueEditorAssets']);
     }
 
     /**
@@ -26,8 +29,6 @@ class Assets
     public function enqueueAppAssets(): void
     {
         // css
-        //wp_dequeue_style('wp-block-library');
-
         wp_enqueue_style('genesis-app', mix('css/app.css'), [], null);
 
         // js
@@ -66,23 +67,6 @@ class Assets
         add_theme_support('editor-styles');
 
         add_editor_style(asset('css/editor.css', false));
-    }
-
-    /**
-     * Filter the theme script tag to include the type="module" attribute.
-     *
-     * @param string $tag    The &lt;script&gt; tag for the enqueued script
-     * @param string $handle The script's registered handle
-     * @param string $src    The script's source URL
-     *
-     * @return string
-     */
-    public function addScriptModuleAttribute(string $tag, string $handle, string $src): string
-    {
-        if ($handle !== 'app') {
-            return $tag;
-        }
-        return '<script type="module" src="' . esc_url($src) . '"></script>';
     }
 
     /**

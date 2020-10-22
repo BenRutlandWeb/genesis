@@ -7,7 +7,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('flex flex-col h-screen'); ?>>
+<body <?php body_class('flex flex-col min-h-screen'); ?>>
 
     <?php wp_body_open(); ?>
 

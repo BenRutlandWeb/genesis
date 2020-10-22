@@ -1,4 +1,5 @@
 const mix = require("laravel-mix");
+
 const postCss = [
   require("postcss-import"),
   require("postcss-nested"),

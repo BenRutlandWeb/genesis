@@ -1,23 +1,15 @@
 <?php
 
-namespace App\Services;
+namespace App\Listeners;
 
-class ThemeSupport
+class AddThemeSupport
 {
     /**
-     * Add actions and filters.
-     */
-    public function __construct()
-    {
-        add_action('after_setup_theme', [$this, 'addThemeSupport']);
-    }
-
-    /**
-     * Add the theme support.
+     * Handle the event.
      *
      * @return void
      */
-    public function addThemeSupport(): void
+    public function handle()
     {
         add_theme_support('title-tag');
 

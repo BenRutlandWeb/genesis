@@ -13,6 +13,6 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->instance('wp.blockmenu', new \App\Services\ReusableBlockMenu());
+        # code...
     }
 }

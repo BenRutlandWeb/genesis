@@ -14,9 +14,6 @@ use Genesis\Support\Facades\Ajax;
 |
 */
 
-
 Ajax::middleware(['auth', 'guest'])->group(function () {
-
-
     Ajax::listen('test', \App\Controllers\TestController::class);
 });
