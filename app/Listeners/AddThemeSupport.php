@@ -31,17 +31,17 @@ class AddThemeSupport
             'editor-font-sizes',
             [
                 [
-                    'name' => __('Small', 'genesis'),
+                    'name' => __('Small', '@textdomain'),
                     'slug' => 'small',
                     'size' => 16
                 ],
                 [
-                    'name' => __('Medium', 'genesis'),
+                    'name' => __('Medium', '@textdomain'),
                     'slug' => 'medium',
                     'size' => 20
                 ],
                 [
-                    'name' => __('Large', 'genesis'),
+                    'name' => __('Large', '@textdomain'),
                     'slug' => 'large',
                     'size' => 24
                 ]
@@ -54,12 +54,12 @@ class AddThemeSupport
             'editor-color-palette',
             [
                 [
-                    'name'  => __('Primary', 'genesis'),
+                    'name'  => __('Primary', '@textdomain'),
                     'slug'  => 'primary',
                     'color' => 'var(--primary)',
                 ],
                 [
-                    'name'  => __('Secondary', 'genesis'),
+                    'name'  => __('Secondary', '@textdomain'),
                     'slug'  => 'secondary',
                     'color' => 'var(--secondary)',
                 ],

@@ -13,8 +13,8 @@ class RegisterNavMenus
     {
         register_nav_menus(
             [
-                'primary_menu'   => __('Primary Menu', 'genesis'),
-                'secondary_menu' => __('Secondary Menu', 'genesis'),
+                'primary_menu'   => __('Primary Menu', '@textdomain'),
+                'secondary_menu' => __('Secondary Menu', '@textdomain'),
             ]
         );
     }

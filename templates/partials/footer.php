@@ -15,10 +15,10 @@
         printf(
             __(
                 'Copyright © %s <a href="https://github.com/BenRutlandWeb/genesis" rel="external noopener nofollow noreferrer" target="_blank" class="link">%s</a>',
-                'genesis'
+                '@textdomain'
             ),
             date('Y'),
-            __('Genesis', 'genesis')
+            __('Genesis', '@textdomain')
         );
         ?>
     </p>
