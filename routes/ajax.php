@@ -2,6 +2,7 @@
 
 use Genesis\Http\Request;
 use Genesis\Support\Facades\Ajax;
+use Genesis\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use Genesis\Support\Facades\Ajax;
 |
 */
 
-Ajax::middleware(['auth', 'guest'])->group(function () {
-    Ajax::listen('test', \App\Controllers\TestController::class);
+Ajax::prefix('gen')->group(function () {
+    Ajax::listen('api', \App\Controllers\ApiController::class);
+
+    Ajax::listen('users', function (URL $request) {
+        return $request::home();
+        return Genesis\Database\Models\User::find($request->id ?? 103);
+    });
 });

@@ -74,7 +74,7 @@ class AuthGuard
      */
     public function redirectNonAdminUsers(): void
     {
-        if (!auth()->user()->isAdmin()) {
+        if (!wp_doing_ajax() && !auth()->user()->isAdmin()) {
             url()->redirect('account');
         }
     }
