@@ -15,11 +15,4 @@ use Genesis\Support\Facades\URL;
 |
 */
 
-Ajax::prefix('gen')->group(function () {
-    Ajax::listen('api', \App\Controllers\ApiController::class);
-
-    Ajax::listen('users', function (URL $request) {
-        return $request::home();
-        return Genesis\Database\Models\User::find($request->id ?? 103);
-    });
-});
+Ajax::listen('ajax_action', \App\Http\Controllers\DummyController::class);

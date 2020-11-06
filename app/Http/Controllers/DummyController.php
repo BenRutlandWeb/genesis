@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Http\Controllers;
 
 use Genesis\Http\Request;
 use Genesis\Routing\Controller;
 
-class ApiController extends Controller
+class DummyController extends Controller
 {
     /**
-     * handle the ajax call
+     * Handle the incoming request.
      *
      * @param \Genesis\Http\Request $request
      *
@@ -16,9 +16,6 @@ class ApiController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $request->message = 'Welcome to enjoyable development!';
-        $request->hello = 'world!';
-
         return $request;
     }
 }

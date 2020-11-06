@@ -51,8 +51,6 @@ return [
     */
 
     'providers' => [
-        \App\Providers\AdminServiceProvider::class,
-        \App\Providers\AppServiceProvider::class,
         \App\Providers\EventServiceProvider::class,
     ],
 
@@ -75,7 +73,9 @@ return [
         'DB'      => \Genesis\Support\Facades\DB::class,
         'Event'   => \Genesis\Support\Facades\Event::class,
         'File'    => \Genesis\Support\Facades\File::class,
+        'Mail'    => \Genesis\Support\Facades\Mail::class,
         'Request' => \Genesis\Support\Facades\Request::class,
+        'Route'   => \Genesis\Support\Facades\Route::class,
         'Str'     => \Illuminate\Support\Str::class,
         'URL'     => \Genesis\Support\Facades\URL::class,
         'View'    => \Genesis\Support\Facades\View::class,

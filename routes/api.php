@@ -14,18 +14,4 @@ use Genesis\Support\Facades\Route;
 |
 */
 
-
-Route::prefix('auth')->group(function () {
-    Route::resource('cheese', \App\Controllers\ResourceController::class);
-    Route::get('api', \App\Controllers\ApiController::class);
-
-    Route::get('users/{user?}', function (int $user = 103) {
-        return Genesis\Database\Models\User::find($user);
-    });
-});
-
-Route::prefix('posts/published')->group(function () {
-    Route::prefix('funny')->group(function () {
-        Route::get('api', \App\Controllers\ApiController::class);
-    });
-});
+Route::get('rest/route', \App\Http\Controllers\DummyController::class);
