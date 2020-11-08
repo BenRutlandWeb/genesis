@@ -14,4 +14,5 @@ use Genesis\Support\Facades\Route;
 |
 */
 
-Route::get('rest/route', \App\Http\Controllers\DummyController::class);
+Route::resource('coupons', \App\Http\Controllers\CouponController::class);
+Route::get('coupons/{id}/redeem', [\App\Http\Controllers\CouponController::class, 'redeem']);

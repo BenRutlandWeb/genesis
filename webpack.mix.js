@@ -17,13 +17,13 @@ const postCss = [
  */
 
 mix
-  .js("src/js/admin.js", "js")
-  .js("src/js/app.js", "js")
+  .js("resources/js/admin.js", "js")
+  .js("resources/js/app.js", "js")
 
-  .postCss("src/css/admin.css", "css", postCss)
-  .postCss("src/css/app.css", "css", postCss)
-  .postCss("src/css/editor.css", "css", postCss)
+  .postCss("resources/css/admin.css", "css", postCss)
+  .postCss("resources/css/app.css", "css", postCss)
+  .postCss("resources/css/editor.css", "css", postCss)
 
-  .setPublicPath("assets")
+  .setPublicPath("dist")
 
   .version();

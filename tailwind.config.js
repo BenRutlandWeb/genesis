@@ -5,7 +5,7 @@ module.exports = {
   },
   purge: {
     layers: ["base", "utilities"],
-    content: ["./templates/**/*.php"],
+    content: ["./resources/views/**/*.blade.php","./resources/views/**/*.php"],
   },
   theme: {
     container: {

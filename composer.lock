@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d701d8bcc1a91d7dd7f76f8c50f3de8c",
+    "content-hash": "d8b12c2d26b1d5c907dff9f92dff5e8a",
     "packages": [
         {
             "name": "brw/genesis-framework",
@@ -12,19 +12,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BenRutlandWeb/genesis-framework.git",
-                "reference": "66a443a9a9ec7be3947b5aab18ccaf318e4c39e4"
+                "reference": "a56de47a5e1c579187ce9e878a0cea896b3929b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/66a443a9a9ec7be3947b5aab18ccaf318e4c39e4",
-                "reference": "66a443a9a9ec7be3947b5aab18ccaf318e4c39e4",
+                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/a56de47a5e1c579187ce9e878a0cea896b3929b7",
+                "reference": "a56de47a5e1c579187ce9e878a0cea896b3929b7",
                 "shasum": ""
             },
             "require": {
+                "illuminate/config": "^8.13",
                 "illuminate/container": "^8.6",
                 "illuminate/database": "^8.7",
                 "illuminate/http": "^8.13",
                 "illuminate/support": "^8.6",
+                "illuminate/view": "^8.13",
                 "php": "^7.3",
                 "staudenmeir/eloquent-has-many-deep": "^1.13",
                 "symfony/finder": "^5.1"
@@ -59,7 +61,7 @@
                 "source": "https://github.com/BenRutlandWeb/genesis-framework/tree/main",
                 "issues": "https://github.com/BenRutlandWeb/genesis-framework/issues"
             },
-            "time": "2020-11-06T21:25:42+00:00"
+            "time": "2020-11-08T18:34:13+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -157,6 +159,59 @@
             "time": "2020-05-29T15:13:26+00:00"
         },
         {
+            "name": "illuminate/bus",
+            "version": "v8.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/bus.git",
+                "reference": "c1d89860bed490e41db9634ff19f64c800e40b5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/bus/zipball/c1d89860bed490e41db9634ff19f64c800e40b5c",
+                "reference": "c1d89860bed490e41db9634ff19f64c800e40b5c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/collections": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/pipeline": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "suggest": {
+                "illuminate/queue": "Required to use closures when chaining jobs (^7.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Bus\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Bus package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2020-10-27T15:20:30+00:00"
+        },
+        {
             "name": "illuminate/collections",
             "version": "v8.13.0",
             "source": {
@@ -203,6 +258,54 @@
                 }
             ],
             "description": "The Illuminate Collections package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2020-10-27T15:20:30+00:00"
+        },
+        {
+            "name": "illuminate/config",
+            "version": "v8.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/config.git",
+                "reference": "8441c542312b4d57220b1f942b947b6517c05008"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/config/zipball/8441c542312b4d57220b1f942b947b6517c05008",
+                "reference": "8441c542312b4d57220b1f942b947b6517c05008",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/collections": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Config\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Config package.",
             "homepage": "https://laravel.com",
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
@@ -378,6 +481,61 @@
             "time": "2020-11-02T14:07:52+00:00"
         },
         {
+            "name": "illuminate/events",
+            "version": "v8.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/events.git",
+                "reference": "d45e9581f54ae0f92699469c7c9c7251495ea119"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/d45e9581f54ae0f92699469c7c9c7251495ea119",
+                "reference": "d45e9581f54ae0f92699469c7c9c7251495ea119",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "^8.0",
+                "illuminate/collections": "^8.0",
+                "illuminate/container": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/macroable": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Events\\": ""
+                },
+                "files": [
+                    "functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Events package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2020-10-27T15:20:30+00:00"
+        },
+        {
             "name": "illuminate/filesystem",
             "version": "v8.13.0",
             "source": {
@@ -544,6 +702,54 @@
             "time": "2020-10-27T15:20:30+00:00"
         },
         {
+            "name": "illuminate/pipeline",
+            "version": "v8.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/pipeline.git",
+                "reference": "d406237ea39f6c655569551a8bfb2d00ace6e43d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/pipeline/zipball/d406237ea39f6c655569551a8bfb2d00ace6e43d",
+                "reference": "d406237ea39f6c655569551a8bfb2d00ace6e43d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Pipeline\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Pipeline package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2020-10-27T15:20:30+00:00"
+        },
+        {
             "name": "illuminate/session",
             "version": "v8.13.0",
             "source": {
@@ -665,6 +871,60 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2020-11-03T13:46:08+00:00"
+        },
+        {
+            "name": "illuminate/view",
+            "version": "v8.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/view.git",
+                "reference": "696a1d6d2213be192429e97245a3d2bb4d6d1849"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/696a1d6d2213be192429e97245a3d2bb4d6d1849",
+                "reference": "696a1d6d2213be192429e97245a3d2bb4d6d1849",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/collections": "^8.0",
+                "illuminate/container": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/events": "^8.0",
+                "illuminate/filesystem": "^8.0",
+                "illuminate/macroable": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\View\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate View package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2020-11-02T14:01:41+00:00"
         },
         {
             "name": "nesbot/carbon",

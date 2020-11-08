@@ -29,6 +29,6 @@ class EventServiceProvider extends ServiceProvider
     protected $subscribe = [
         \App\Listeners\EnqueueScripts::class,
         \App\Listeners\TidyHead::class,
-        \App\Listeners\AuthGuard::class,
+        #\App\Listeners\AuthGuard::class,
     ];
 }

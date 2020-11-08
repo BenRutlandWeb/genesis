@@ -4,14 +4,14 @@ namespace App\Cpts;
 
 use Genesis\WordPress\Cpt;
 
-class Recipe extends Cpt
+class Coupon extends Cpt
 {
     /**
      * The post type name (singular)
      *
      * @var string
      */
-    protected $name = 'recipe';
+    protected $name = 'coupon';
 
     /**
      * Options for post type registration
@@ -22,7 +22,7 @@ class Recipe extends Cpt
         'public'       => true,
         'has_archive'  => true,
         'show_in_rest' => true,
-        'menu_icon'    => 'dashicons-food',
+        'menu_icon'    => 'dashicons-tickets-alt',
         'supports'     => ['title', 'editor', 'author', 'thumbnail'],
     ];
 }

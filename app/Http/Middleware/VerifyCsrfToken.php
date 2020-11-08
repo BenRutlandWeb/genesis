@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
 use Genesis\Http\Request;
@@ -15,7 +15,7 @@ class VerifyCsrfToken
      *
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         return $next($request);
     }
