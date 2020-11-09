@@ -1,5 +1,4 @@
-/vendor/
-/node_modules/
-/dist/
-/storage/
-
+/vendor
+/node_modules
+/dist
+/storage/framework
