@@ -25,7 +25,6 @@ return [
         \Genesis\View\BladeServiceProvider::class,
         \Genesis\View\ViewServiceProvider::class,
         \Genesis\WordPress\WordPressServiceProvider::class,
-        \Illuminate\Translation\TranslationServiceProvider::class,
 
         #\Illuminate\Auth\AuthServiceProvider::class,
         #\Illuminate\Broadcasting\BroadcastServiceProvider::class,
