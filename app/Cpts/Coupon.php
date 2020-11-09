@@ -22,6 +22,7 @@ class Coupon extends Cpt
         'public'       => true,
         'has_archive'  => true,
         'show_in_rest' => true,
+        'rewrite'      => ['slug' => 'coupons'],
         'menu_icon'    => 'dashicons-tickets-alt',
         'supports'     => ['title', 'editor', 'author', 'thumbnail'],
     ];

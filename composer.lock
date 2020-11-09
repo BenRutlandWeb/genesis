@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BenRutlandWeb/genesis-framework.git",
-                "reference": "a56de47a5e1c579187ce9e878a0cea896b3929b7"
+                "reference": "e62446e231b9759fde473e35ae00f2a8796ee58d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/a56de47a5e1c579187ce9e878a0cea896b3929b7",
-                "reference": "a56de47a5e1c579187ce9e878a0cea896b3929b7",
+                "url": "https://api.github.com/repos/BenRutlandWeb/genesis-framework/zipball/e62446e231b9759fde473e35ae00f2a8796ee58d",
+                "reference": "e62446e231b9759fde473e35ae00f2a8796ee58d",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,7 @@
                 "source": "https://github.com/BenRutlandWeb/genesis-framework/tree/main",
                 "issues": "https://github.com/BenRutlandWeb/genesis-framework/issues"
             },
-            "time": "2020-11-08T18:34:13+00:00"
+            "time": "2020-11-09T00:01:16+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -3136,23 +3136,23 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.5.3",
+            "version": "1.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "25bcbf01678930251fd572891447d9e318a6e2b8"
+                "reference": "87dc337d4200b32717dd3849fea846319e897658"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/25bcbf01678930251fd572891447d9e318a6e2b8",
-                "reference": "25bcbf01678930251fd572891447d9e318a6e2b8",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/87dc337d4200b32717dd3849fea846319e897658",
+                "reference": "87dc337d4200b32717dd3849fea846319e897658",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~6.0 || ~7.0"
+                "phpunit/phpunit": "~6.0 || ~7.0 || ~9.0"
             },
             "suggest": {
                 "ext-intl": "Use Intl for transliterator_transliterate() support"
@@ -3182,7 +3182,7 @@
             ],
             "support": {
                 "issues": "https://github.com/voku/portable-ascii/issues",
-                "source": "https://github.com/voku/portable-ascii/tree/master"
+                "source": "https://github.com/voku/portable-ascii/tree/1.5.4"
             },
             "funding": [
                 {
@@ -3206,7 +3206,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-22T23:32:04+00:00"
+            "time": "2020-11-08T21:15:15+00:00"
         }
     ],
     "packages-dev": [],

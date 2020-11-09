@@ -18,6 +18,7 @@ module.exports = {
       secondary: "var(--secondary)",
       white:"var(--white)",
       black:"var(--black)",
+      error:"var(--error)",
       grey: {
         50: "var(--grey-50)",
         100: "var(--grey-100)",

@@ -36,15 +36,15 @@ return [
     'connections' => [
 
         'mysql' => [
-            'driver' => 'mysql',
-            'host' => DB_HOST,
-            'port' => '3306',
-            'database' => DB_NAME,
-            'username' => DB_USER,
-            'password' => DB_PASSWORD,
-            'charset' => 'utf8mb4',
+            'driver'    => 'mysql',
+            'host'      => DB_HOST,
+            'port'      => '3306',
+            'database'  => DB_NAME,
+            'username'  => DB_USER,
+            'password'  => DB_PASSWORD,
+            'charset'   => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => $wpdb->prefix,
+            'prefix'    => $wpdb->prefix,
         ],
     ],
 
