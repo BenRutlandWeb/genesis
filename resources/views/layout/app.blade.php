@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="{{ get_bloginfo('charset') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @wp_head
 </head>
@@ -10,6 +11,8 @@
 <body {{ body_class('flex flex-col min-h-screen') }}>
 
     @body_open
+
+    @csrf
 
     @include('partials.header')
 

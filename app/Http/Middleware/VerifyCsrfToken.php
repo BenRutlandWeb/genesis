@@ -2,21 +2,14 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
-use Genesis\Http\Request;
+use Genesis\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 
-class VerifyCsrfToken
+class VerifyCsrfToken extends Middleware
 {
     /**
-     * Handle an incoming request.
+     * The URIs and AJAX actions that should be excluded from CSRF verification.
      *
-     * @param \Genesis\Http\Request $request
-     * @param \Closure              $next
-     *
-     * @return mixed
+     * @var array
      */
-    public function handle(Request $request, Closure $next)
-    {
-        return $next($request);
-    }
+    protected $except = [];
 }

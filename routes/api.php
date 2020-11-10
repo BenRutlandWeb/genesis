@@ -1,6 +1,5 @@
 <?php
 
-use Genesis\Http\Request;
 use Genesis\Support\Facades\Route;
 
 /*
@@ -16,3 +15,6 @@ use Genesis\Support\Facades\Route;
 
 Route::resource('coupons', \App\Http\Controllers\CouponController::class);
 Route::get('coupons/{id}/redeem', [\App\Http\Controllers\CouponController::class, 'redeem']);
+
+
+Route::get('example/{name}', \App\Http\Controllers\DummyController::class);

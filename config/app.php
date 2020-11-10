@@ -17,11 +17,9 @@ return [
         \Genesis\Auth\AuthServiceProvider::class,
         \Genesis\Console\ConsoleServiceProvider::class,
         \Illuminate\Database\DatabaseServiceProvider::class,
-        \Genesis\Events\EventServiceProvider::class,
         \Illuminate\Filesystem\FilesystemServiceProvider::class,
         \Genesis\Http\HttpServiceProvider::class,
         \Genesis\Mail\MailServiceProvider::class,
-        \Genesis\Routing\RoutingServiceProvider::class,
         \Genesis\View\BladeServiceProvider::class,
         \Genesis\View\ViewServiceProvider::class,
         \Genesis\WordPress\WordPressServiceProvider::class,
@@ -47,6 +45,7 @@ return [
 
 
         \App\Providers\EventServiceProvider::class,
+        \App\Providers\RouteServiceProvider::class,
     ],
 
     /*
