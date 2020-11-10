@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Genesis\Http\Request;
 
-class DummyMiddleware
+class RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,9 @@ class DummyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $request->merge(['rest' => 'route']);
-
-        return $next($request);
+        if (!is_user_logged_in()) {
+            return $next($request);
+        }
+        return url()->redirect('/');
     }
 }

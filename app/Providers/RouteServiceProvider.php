@@ -5,6 +5,7 @@ namespace App\Providers;
 use Genesis\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Genesis\Support\Facades\Ajax;
 use Genesis\Support\Facades\Event;
+use Genesis\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -53,10 +54,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Event::listen('rest_api_init', function () {
-            $this->app->make('router.api')
-                ->middleware('api')
-                ->group(base_path('routes/api.php'));
-        });
+        #Event::listen('rest_api_init', function () {
+        Route::middleware('api')->prefix('api')->group(base_path('routes/api.php'));
+        #});
     }
 }

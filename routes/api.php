@@ -13,8 +13,8 @@ use Genesis\Support\Facades\Route;
 |
 */
 
-Route::resource('coupons', \App\Http\Controllers\CouponController::class);
-Route::get('coupons/{id}/redeem', [\App\Http\Controllers\CouponController::class, 'redeem']);
+#Route::get('example/{name}', \App\Http\Controllers\DummyController::class);
+Route::get('coupons/{coupon}', [\App\Http\Controllers\CouponController::class, 'show']);
 
-
-Route::get('example/{name}', \App\Http\Controllers\DummyController::class);
+#Route::resource('coupons', \App\Http\Controllers\CouponController::class);
+#Route::get('coupons/{id}/redeem', [\App\Http\Controllers\CouponController::class, 'redeem']);

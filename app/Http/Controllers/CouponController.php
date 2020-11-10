@@ -6,8 +6,8 @@ use App\Mail\CouponRedeemed;
 use App\Models\Coupon;
 use Genesis\Database\Models\User;
 use Genesis\Http\Request;
-use Genesis\Routing\Controller;
 use Genesis\Support\Facades\Mail;
+use Illuminate\Routing\Controller;
 
 class CouponController extends Controller
 {
@@ -50,9 +50,9 @@ class CouponController extends Controller
      *
      * @return mixed
      */
-    public function show(string $id)
+    public function show(Coupon $coupon)
     {
-        return Coupon::where('post_name', $id)->first();
+        return $coupon;
     }
 
     /**

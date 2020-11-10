@@ -20,3 +20,7 @@ Ajax::prefix('get')->group(function () {
     Ajax::guest('the_action_guest', \App\Http\Controllers\DummyController::class);
     Ajax::listen('the_action_both', \App\Http\Controllers\DummyController::class);
 });
+
+Ajax::middleware('guest')->group(function () {
+    Ajax::listen('authenticated', \App\Http\Controllers\DummyController::class);
+});

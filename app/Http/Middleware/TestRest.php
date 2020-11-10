@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Genesis\Http\Request;
 
-class DummyMiddleware
+class TestRest
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,7 @@ class DummyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $request->merge(['rest' => 'route']);
-
+        $request->merge(['test' => 'is the best']);
         return $next($request);
     }
 }

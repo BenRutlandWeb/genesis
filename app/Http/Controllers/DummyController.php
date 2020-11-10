@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestAjax;
 use Genesis\Http\Request;
-use Genesis\Routing\Controller;
+use Genesis\Mail\Mailer;
+use Illuminate\Routing\Controller;
 
 class DummyController extends Controller
 {
@@ -14,8 +16,9 @@ class DummyController extends Controller
      *
      * @return mixed
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, Mailer $mailer)
     {
+        $mailer->to('benrutland@hotmail.com')->send(new TestAjax());
         return $request;
     }
 }
